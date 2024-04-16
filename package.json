@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev --filter web",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "dev:crawler": "turbo run dev --filter crawler"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
