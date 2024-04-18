@@ -2,9 +2,9 @@
   "name": "fyp",
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --filter web",
     "dev": "turbo dev --filter web",
-    "lint": "turbo lint",
+    "lint": "turbo lint --filter web",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "dev:crawler": "turbo run dev --filter crawler"
   },
