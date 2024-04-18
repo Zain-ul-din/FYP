@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
   const responseAPI = await fetch(`${request.nextUrl.origin}/api/signin`, {
     headers: { cookie: `session=${session?.value}` },
   });
-
+  
   if (responseAPI.status !== 200) {
     if (pathname === '/signin') return NextResponse.next();
     return NextResponse.redirect(new URL('/signin', request.nextUrl));

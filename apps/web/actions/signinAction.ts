@@ -3,7 +3,9 @@ import { auth } from 'firebase-admin';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { initAdminSDK } from '@/lib/firebase/admin-sdk';
 
+initAdminSDK();
 export default async function SignInAction(tokenId: string) {
   const decodeToken = await auth().verifyIdToken(tokenId);
 
