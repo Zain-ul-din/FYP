@@ -3,5 +3,5 @@ export default function JoinPage() {
     <div>
       <h1>Join</h1>
     </div>
-  )
+  );
 }
