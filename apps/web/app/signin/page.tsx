@@ -1,6 +1,7 @@
 'use client';
 
 import SignInWithGoogleProvider from '@/providers/SigninWithGoogleProvider';
+import { Button } from '@chakra-ui/react';
 
 export default function SignInPage() {
   return (
@@ -10,7 +11,9 @@ export default function SignInPage() {
         {(login, [user]) => (
           <>
             {user && <p>Welcome, {user.displayName}</p>}
-            <button onClick={login}>Sign in with Google</button>
+            <Button colorScheme="green" onClick={login}>
+              Sign in with Google
+            </Button>
           </>
         )}
       </SignInWithGoogleProvider>

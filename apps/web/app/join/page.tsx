@@ -1,7 +1,10 @@
+'use client';
+import { Button } from '@chakra-ui/react';
+
 export default function JoinPage() {
   return (
     <div>
-      <h1>Join</h1>
+      <Button colorScheme="green">Join</Button>
     </div>
   );
 }
