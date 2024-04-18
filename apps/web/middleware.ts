@@ -19,9 +19,10 @@ export async function middleware(request: NextRequest) {
   });
 
   if (responseAPI.status !== 200) {
+    if (pathname === '/signin') return NextResponse.next();
     return NextResponse.redirect(new URL('/signin', request.nextUrl));
   }
-
+  
   // if the user is not a doctor, redirect to the join page
 
   const { customClaims } = await responseAPI.json();
