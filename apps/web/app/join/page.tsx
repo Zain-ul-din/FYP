@@ -1,10 +1,5 @@
-'use client';
-import { Button } from '@chakra-ui/react';
+import JoinAsDoctor from '@/components/JoinAsDoctor';
 
 export default function JoinPage() {
-  return (
-    <div>
-      <Button colorScheme="green">Join</Button>
-    </div>
-  );
+  return <JoinAsDoctor />;
 }

@@ -14,6 +14,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@repo/ui": "workspace:*",
+    "chakra-react-select": "^4.7.6",
     "firebase": "^10.11.0",
     "firebase-admin": "^12.1.0",
     "framer-motion": "^11.1.5",
