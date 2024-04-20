@@ -1,8 +1,8 @@
 :root {
   /* gradients */
 
-  --red-grad: linear-gradient(180deg, #e71b40 0%, #a5001f 100%);
-
+  --red-grad: linear-gradient(rgb(59, 130, 246), rgb(37, 99, 235));
+  
   /* colors */
   --black-color: #222225;
   --dark-text-color: #464255;
