@@ -40,7 +40,7 @@ export async function middleware(request: NextRequest) {
     });
   } 
   
-  if(customClaims.isDoctor && pathname !== '/dashboard') {
+  if(customClaims.isDoctor && !pathname.startsWith("/dashboard")) {
     return NextResponse.redirect(new URL('/dashboard', request.nextUrl), {
       headers: requestHeaders
     });

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { LufgaFont } from '@/lib/fonts';
 import '../../app/globals.css';
+import DashboardLayout from '@/components/layouts/DashboardLayout';
+import { ChakraClientProvider } from '@/providers/ChakraClientProvider';
 
 export const metadata: Metadata = {
   title: 'Create Turborepo',
@@ -11,8 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
   return (
     <html lang="en">
       <body className={LufgaFont.className}>
-        <h1>Doctor Dashboard Page</h1>
-        {children}
+        <ChakraClientProvider>
+          <DashboardLayout>{children}</DashboardLayout>
+        </ChakraClientProvider>
       </body>
     </html>
   );
