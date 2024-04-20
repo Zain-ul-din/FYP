@@ -141,7 +141,7 @@ const dashboardLinks: {
   { text: 'Dashboard', Icon: CategoryIcon },
   { text: 'Hospitals', Icon: OrganizationIcon },
   { text: 'Ambulance', Icon: AmbulanceIcon },
-  { text: 'Users', Icon: FluentPersonIcon },
+  { text: 'Patients', Icon: FluentPersonIcon },
   { text: 'Booking', Icon: SteeringIcon },
   { text: 'Settings', Icon: SettingIcons },
   { text: 'Emergency contact', Icon: FluentSupportIcon },

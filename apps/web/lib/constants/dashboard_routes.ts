@@ -2,7 +2,7 @@ export const ROUTES = {
   Dashboard: '/dashboard',
   Hospitals: '/dashboard/hospitals',
   Ambulance: '/ambulance',
-  Users: '/users',
+  Patients: '/dashboard/patients',
   Booking: '/booking',
   Settings: '/settings',
   'Emergency contact': '/emergency-contact',
@@ -14,7 +14,7 @@ export const ROUTES = {
   'Ambulance_AddNewType': '',
   'Ambulance_AddNewManufacturer': '',
   
-  'User_Medical_Coorp': '',
+  'User_Served': '',
 
   'Booking_Chat': '',
   'Booking_Tracking': '',
@@ -28,7 +28,7 @@ ROUTES['Ambulance_Manufacturers'] = `${ROUTES['Ambulance']}/manufacturers`
 ROUTES['Ambulance_AddNewType'] = `${ROUTES['Ambulance']}/new-type`
 ROUTES['Ambulance_AddNewManufacturer']= `${ROUTES['Ambulance']}/new-manufacturer`
 
-ROUTES['User_Medical_Coorp'] = `${ROUTES['Users']}/medicalcrop`
+ROUTES['User_Served'] = `${ROUTES['Patients']}/served`
 
 ROUTES['Booking_Chat'] = `${ROUTES['Booking']}/chat`
 ROUTES['Booking_Tracking'] = `${ROUTES['Booking']}/map-tracking`
@@ -39,9 +39,9 @@ ROUTES['settings_Policy'] = `${ROUTES['Settings']}/policy`
 
 
 export const SUB_ROUTES: Partial<Record<keyof typeof ROUTES, { name: string; link: string }[]>> = {
-  Users: [
-    { name: 'Individual', link: ROUTES['Users'] },
-    { name: 'Medical Coorp', link: ROUTES['User_Medical_Coorp'] },
+  Patients: [
+    { name: 'Pending', link: ROUTES['Patients'] },
+    { name: 'Served', link: ROUTES['User_Served'] },
   ],
   Ambulance: [
     { name: 'Types', link: ROUTES['Ambulance'] },
