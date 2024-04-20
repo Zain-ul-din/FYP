@@ -1,7 +1,7 @@
 import { auth } from 'firebase-admin';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { initAdminSDK } from '../../../lib/firebase/admin-sdk';
+import { initAdminSDK } from '@/lib/firebase/admin-sdk';
 
 initAdminSDK();
 export async function GET() {

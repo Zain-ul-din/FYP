@@ -124,6 +124,9 @@ importers:
       react-firebase-hooks:
         specifier: ^5.1.1
         version: 5.1.1(firebase@10.11.0)(react@18.2.0)
+      zod:
+        specifier: ^3.22.5
+        version: 3.22.5
     devDependencies:
       '@next/eslint-plugin-next':
         specifier: ^14.1.1
@@ -9767,3 +9770,7 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  /zod@3.22.5:
+    resolution: {integrity: sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==}
+    dev: false

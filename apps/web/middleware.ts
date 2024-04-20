@@ -24,13 +24,32 @@ export async function middleware(request: NextRequest) {
   }
   
   // if the user is not a doctor, redirect to the join page
-
-  const { customClaims } = await responseAPI.json();
+  
+  const { uid, customClaims } = await responseAPI.json();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-user', `${uid}`);
+  requestHeaders.set('x-claims', `${JSON.stringify(customClaims)}`);
+  requestHeaders.set('x-origin', `${request.nextUrl.origin}`);
 
   if (!customClaims.isDoctor) {
-    if (pathname === '/join') return NextResponse.next();
-    return NextResponse.redirect(new URL('/join', request.nextUrl));
+    if (pathname === '/join') return NextResponse.next({
+      headers: requestHeaders,
+    });
+    return NextResponse.redirect(new URL('/join', request.nextUrl), {
+      headers: requestHeaders
+    });
+  } 
+  
+  if(customClaims.isDoctor && pathname !== '/dashboard') {
+    return NextResponse.redirect(new URL('/dashboard', request.nextUrl), {
+      headers: requestHeaders
+    });
   }
-
-  return NextResponse.next();
+  
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    }
+  });
 }
+

@@ -1,5 +1,6 @@
 'use client';
 
+import createDoctorAction from '@/actions/createDoctorAction';
 import conditions from '@/lib/constants/conditions';
 import doctor_titles from '@/lib/constants/doctor_titles';
 import specializations from '@/lib/constants/specializations';
@@ -141,7 +142,16 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       Object.entries(formState).forEach(([key, value]) => {
         dispatch({ type: key as keyof FormState, payload: value.value });
       });
-      console.log(formState);
+
+      createDoctorAction({
+        title: formState.title.value,
+        fullName: formState.fullName.value,
+        yearOfExperience: formState.yearOfExperience.value,
+        primarySpecialization: formState.primarySpecialization.value,
+        secondarySpecializations: formState.secondarySpecializations.value,
+        conditionsTreated: formState.conditionsTreated.value,
+        pmdcRegistrationNumber: formState.pmdcRegistrationNumber.value,
+      });
     },
     [formState]
   );

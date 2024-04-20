@@ -16,7 +16,7 @@ export default async function SignInAction(tokenId: string) {
   const sessionCookie = await auth().createSessionCookie(tokenId, {
     expiresIn,
   });
-
+  
   cookies().set({
     name: 'session',
     value: sessionCookie,
