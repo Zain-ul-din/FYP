@@ -2,7 +2,7 @@
   /* gradients */
 
   --red-grad: linear-gradient(rgb(59, 130, 246), rgb(37, 99, 235));
-  
+
   /* colors */
   --black-color: #222225;
   --dark-text-color: #464255;
@@ -12,4 +12,18 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+/* animation */
+
+.sticky-sidebar-open {
+  transform: translateX(0);
+}
+
+.sticky-sidebar-close {
+  transform: translateX(-2000px);
+}
+
+.ease-in-out {
+  transition: transform 300ms ease-in-out;
 }

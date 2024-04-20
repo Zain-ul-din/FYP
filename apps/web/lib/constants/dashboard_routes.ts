@@ -1,7 +1,6 @@
 export const ROUTES = {
   Dashboard: '/dashboard',
   Hospitals: '/dashboard/hospitals',
-  Ambulance: '/ambulance',
   Patients: '/dashboard/patients',
   Booking: '/booking',
   Settings: '/settings',
@@ -9,10 +8,6 @@ export const ROUTES = {
   'Sign in': '/signin',
   'Manage Admins': '/admins',
   SupportChat: '/support-chat',
-  // sub routes
-  'Ambulance_Manufacturers': '',
-  'Ambulance_AddNewType': '',
-  'Ambulance_AddNewManufacturer': '',
   
   'User_Served': '',
 
@@ -24,9 +19,6 @@ export const ROUTES = {
   'settings_Policy': ''
 };
 
-ROUTES['Ambulance_Manufacturers'] = `${ROUTES['Ambulance']}/manufacturers`
-ROUTES['Ambulance_AddNewType'] = `${ROUTES['Ambulance']}/new-type`
-ROUTES['Ambulance_AddNewManufacturer']= `${ROUTES['Ambulance']}/new-manufacturer`
 
 ROUTES['User_Served'] = `${ROUTES['Patients']}/served`
 
@@ -42,10 +34,6 @@ export const SUB_ROUTES: Partial<Record<keyof typeof ROUTES, { name: string; lin
   Patients: [
     { name: 'Pending', link: ROUTES['Patients'] },
     { name: 'Served', link: ROUTES['User_Served'] },
-  ],
-  Ambulance: [
-    { name: 'Types', link: ROUTES['Ambulance'] },
-    { name: 'Manufacturers', link: ROUTES['Ambulance_Manufacturers'] },
   ],
   Settings: [
     { name: 'General', link: ROUTES['Settings'] },
