@@ -4,7 +4,7 @@ export const ROUTES = {
   Patients: '/dashboard/patients',
   Booking: '/booking',
   Settings: '/settings',
-  'Emergency contact': '/emergency-contact',
+  'Emergency contact': '/dashboard/emergency-contact',
   'Sign in': '/signin',
   'Manage Admins': '/admins',
   SupportChat: '/support-chat',
