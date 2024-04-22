@@ -1,13 +1,11 @@
 'use client';
-import AppointmentTimetable from '@/components/AppointmentTimetable';
+import HealthProviderList from '@/components/HealthProvidersList';
 import createModal from '@/components/design/createModal';
 import CreateNewHealthProviderForm from '@/components/forms/CreateNewHealthProviderForm';
 import OrganizationIcon from '@/components/icons/OrganizationIcon';
 import DashboardHeader from '@/components/shared/DashboardHeader';
 import RoutesBreadcrumb from '@/components/shared/RoutesBreadcrumb';
-import { ROUTES } from '@/lib/constants/dashboard_routes';
 import { Button, Flex } from '@chakra-ui/react';
-import Link from 'next/link';
 
 const CreateHealthProviderModal = createModal();
 
@@ -30,7 +28,8 @@ export default function Hospitals() {
         <AddNewHealthProviderButton />
       </RoutesBreadcrumb>
       <Flex w={'100%'} h={'100%'} p={3} flexDir={'column'} gap={'0.5rem'} pb={5}>
-        <AppointmentTimetable />
+        {/* <AppointmentTimetable /> */}
+        <HealthProviderList />
       </Flex>
     </CreateHealthProviderModal.Provider>
   );
