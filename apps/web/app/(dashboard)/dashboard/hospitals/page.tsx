@@ -1,4 +1,5 @@
 'use client';
+import AppointmentTimetable from '@/components/AppointmentTimetable';
 import createModal from '@/components/design/createModal';
 import CreateNewHealthProviderForm from '@/components/forms/CreateNewHealthProviderForm';
 import OrganizationIcon from '@/components/icons/OrganizationIcon';
@@ -29,7 +30,7 @@ export default function Hospitals() {
         <AddNewHealthProviderButton />
       </RoutesBreadcrumb>
       <Flex w={'100%'} h={'100%'} p={3} flexDir={'column'} gap={'0.5rem'} pb={5}>
-        Hello World
+        <AppointmentTimetable />
       </Flex>
     </CreateHealthProviderModal.Provider>
   );

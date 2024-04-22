@@ -4,16 +4,12 @@ import createDoctorAction from '@/actions/createDoctorAction';
 import conditions from '@/lib/constants/conditions';
 import doctor_titles from '@/lib/constants/doctor_titles';
 import specializations from '@/lib/constants/specializations';
+import InputState from '@/types/InputState';
 import { Button, Flex, FlexProps, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
 import { FormEvent, useReducer, useCallback } from 'react';
 
 interface JoinAsDoctorFormProps extends FlexProps {}
-
-type InputState<T = string> = {
-  value: T;
-  error: string;
-};
 
 interface FormState {
   title: InputState;
