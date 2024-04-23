@@ -117,7 +117,9 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
       });
     });
 
-    const hasError = immediateUpdatedState.some((field: any) => field.error !== '');
+    const hasError = immediateUpdatedState
+      .map((ele) => Object.values(ele).some((field: any) => field.error !== ''))
+      .some((ele) => ele);
 
     if (hasError) return;
 
