@@ -27,11 +27,12 @@ export async function middleware(request: NextRequest) {
   
   const { uid, customClaims } = await responseAPI.json();
   const requestHeaders = new Headers(request.headers);
+
   requestHeaders.set('x-user', `${uid}`);
   requestHeaders.set('x-claims', `${JSON.stringify(customClaims)}`);
   requestHeaders.set('x-origin', `${request.nextUrl.origin}`);
 
-  if (!customClaims.isDoctor) {
+  if (!customClaims || !customClaims.isDoctor) {
     if (pathname === '/join') return NextResponse.next({
       headers: requestHeaders,
     });

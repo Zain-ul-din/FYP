@@ -167,6 +167,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.title.error !== ''}>
         <FormLabel>Title</FormLabel>
         <Select
+          variant={'filled'}
           options={doctor_titles.map((title) => ({ label: title, value: title }))}
           onChange={(value) => dispatch({ type: 'title', payload: value?.value || '' })}
           value={{ value: formState.title.value, label: formState.title.value }}
@@ -177,6 +178,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.fullName.error !== ''}>
         <FormLabel>Full Name</FormLabel>
         <Input
+          variant={'filled'}
           placeholder="Enter full name"
           onChange={(e) => {
             dispatch({ type: 'fullName', payload: e.target.value });
@@ -189,6 +191,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.yearOfExperience.error !== ''}>
         <FormLabel>Year of Experience</FormLabel>
         <Input
+          variant={'filled'}
           placeholder="Enter year of experience"
           type="number"
           onChange={(e) => {
@@ -203,6 +206,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.primarySpecialization.error !== ''}>
         <FormLabel>Primary Specialization</FormLabel>
         <Select
+          variant={'filled'}
           onChange={(value) => dispatch({ type: 'primarySpecialization', payload: value?.value || '' })}
           options={specializations.map((specialization) => ({ label: specialization, value: specialization }))}
           value={{ value: formState.primarySpecialization.value, label: formState.primarySpecialization.value }}
@@ -213,6 +217,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.secondarySpecializations.error !== ''}>
         <FormLabel>Secondary Specialization</FormLabel>
         <Select
+          variant={'filled'}
           options={specializations
             .map((specialization) => ({ label: specialization, value: specialization }))
             .filter((specialization) => specialization.value !== formState.primarySpecialization.value)}
@@ -225,6 +230,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.conditionsTreated.error !== ''}>
         <FormLabel>Conditions Treated</FormLabel>
         <Select
+          variant={'filled'}
           options={[formState.primarySpecialization, formState.secondarySpecializations]
             .map((a) => a.value)
             .map((specialization) =>
@@ -245,6 +251,7 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
       <FormControl isInvalid={formState.pmdcRegistrationNumber.error !== ''}>
         <FormLabel>PMDC registration number</FormLabel>
         <Input
+          variant={'filled'}
           placeholder="Enter PMDC registration number"
           type="number"
           onChange={(e) => {
