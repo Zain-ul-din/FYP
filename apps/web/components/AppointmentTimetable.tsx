@@ -1,27 +1,45 @@
-import { useState } from 'react';
-import { Flex, Card } from '@chakra-ui/react';
+'use client';
+import { useState, useEffect } from 'react';
+import { Flex, Card, Heading, Divider } from '@chakra-ui/react';
 
 interface TimeSlot {
   time: string;
 }
 
-export default function AppointmentTimetable() {
-  const waitTime: number = 15; // Wait time in minutes
-  const startTime: number = 8 * 60; // Start time in minutes (e.g., 8:00 AM)
-  const endTime: number = 17 * 60; // End time in minutes (e.g., 5:00 PM)
+interface AppointmentTimetableProps {
+  waitTime: number;
+  start_time: string; // Updated to use start_time from props
+  end_time: string; // Updated to use end_time from props
+  day: string;
+}
+
+export default function AppointmentTimetable({ start_time, end_time, waitTime, day }: AppointmentTimetableProps) {
   const [selectedSlots, setSelectedSlots] = useState<TimeSlot[]>([]);
-  const slots: TimeSlot[] = [];
+  const [slots, setSlots] = useState<TimeSlot[]>([]);
 
   const [selecting, setSelecting] = useState(false);
 
-  // Generate time slots at regular intervals
-  for (let time = startTime; time < endTime; time += waitTime) {
-    const hours: number = Math.floor(time / 60);
-    const minutes: number = time % 60;
+  useEffect(() => {
+    setSlots([]); // Clear slots before generating new slots
+    // Convert start_time and end_time to minutes
+    const startTimeInMinutes: number = convertTimeToMinutes(start_time);
+    let endTimeInMinutes: number = convertTimeToMinutes(end_time);
 
-    const formattedTime: string = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
-    slots.push({ time: formattedTime });
-  }
+    console.log(startTimeInMinutes, endTimeInMinutes);
+
+    // If end_time is less than start_time, add 1 day
+    if (endTimeInMinutes <= startTimeInMinutes) {
+      endTimeInMinutes += 24 * 60; // Add 1 day (24 hours) in minutes
+    }
+
+    // Generate time slots at regular intervals
+    for (let time = startTimeInMinutes; time < endTimeInMinutes; time += waitTime) {
+      const hours: number = Math.floor(time / 60) % 24; // Handle overflow for multiple days
+      const minutes: number = time % 60;
+      const formattedTime: string = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+      setSlots((slot) => [...slot, { time: formattedTime }]);
+    }
+  }, [start_time, end_time, waitTime]);
 
   const handleSlotMouseDown = (slot: TimeSlot) => {
     setSelecting(true);
@@ -48,14 +66,20 @@ export default function AppointmentTimetable() {
     document.removeEventListener('mouseup', handleMouseUp);
   };
 
+  const convertTimeToMinutes = (time: string): number => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
+
   return (
-    <Flex flexWrap={'wrap'} gap={2} justifyContent={'space-around'}>
+    <Flex flexWrap={'wrap'} gap={2} p={2}>
       {slots.map((slot) => (
         <Card
           p={2}
           key={slot.time}
           style={{
-            backgroundColor: selectedSlots.some((s) => s.time === slot.time) ? 'lightblue' : 'transparent',
+            background: selectedSlots.some((s) => s.time === slot.time) ? 'var(--red-grad)' : 'transparent',
+            color: selectedSlots.some((s) => s.time === slot.time) ? 'white' : 'black',
             cursor: 'pointer',
           }}
           onMouseDown={(e) => {

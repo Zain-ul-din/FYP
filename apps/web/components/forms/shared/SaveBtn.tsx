@@ -4,12 +4,7 @@ import SaveIcon from '../../icons/SaveIcon';
 
 export default function SaveBtn({ ...rest }: ButtonProps) {
   return (
-    <Button variant={'red'} px={4} {...rest}>
-      <SaveIcon
-        style={{
-          margin: '0rem 0.4rem',
-        }}
-      />{' '}
+    <Button variant={'red'} px={4} {...rest} leftIcon={<SaveIcon />}>
       Save
     </Button>
   );
