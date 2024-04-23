@@ -1,24 +1,25 @@
 'use client';
-import AppointmentTimetable from '@/components/AppointmentTimetable';
-import SaveBtn from '@/components/forms/shared/SaveBtn';
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
-  Button,
-  Flex,
-} from '@chakra-ui/react';
+// import AppointmentTimetable from '@/components/AppointmentTimetable';
+import HealthProviderDetails from '@/components/HealthProviderDetails';
+// import SaveBtn from '@/components/forms/shared/SaveBtn';
+// import {
+//   Accordion,
+//   AccordionButton,
+//   AccordionIcon,
+//   AccordionItem,
+//   AccordionPanel,
+//   Box,
+//   Button,
+//   Flex,
+// } from '@chakra-ui/react';
 
-export default function Page() {
+export default function Page({ params: { slug } }: { params: { slug: string } }) {
+  return <HealthProviderDetails uid={slug} />;
   // days of week
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-  return (
+  /*return (
     <Flex flexDir={'column'}>
-      <h1>Health Providers</h1>
+      <h1>Health Provider {slug}</h1>
       <Accordion allowMultiple>
         {days.map((day, i) => (
           <AccordionItem key={i}>
@@ -42,5 +43,5 @@ export default function Page() {
         ))}
       </Accordion>
     </Flex>
-  );
+        );*/
 }

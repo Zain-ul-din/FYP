@@ -10,25 +10,36 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
-import { useCallback, useReducer, useState } from 'react';
+import { useCallback, useEffect, useReducer, useState } from 'react';
 import TimeInput from '../design/TimeInput';
 import InputState from '@/types/InputState';
 import HealthProviderDoc from '@/lib/firebase/types/HealthProviderDoc';
-import { collection, doc, getCountFromServer, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getCountFromServer,
+  query,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
 import { firebaseAuth, firestore } from '@/lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import invariant from 'invariant';
 import { healthProvidersCol } from '@/lib/firebase/collections';
-
-interface CreateNewHealthProviderFormProps {
-  onClose: () => void;
-}
 
 interface FormState
   extends Record<
     keyof Pick<HealthProviderDoc, 'city' | 'name' | 'wait_time' | 'start_time' | 'end_time'>,
     InputState
   > {}
+
+interface CreateNewHealthProviderFormProps {
+  onClose: () => void;
+  initialState?: HealthProviderDoc;
+  update?: boolean;
+}
 
 const initialFormState: FormState = {
   city: { value: '', error: '' },
@@ -98,13 +109,25 @@ const formReducer = (state: FormState, action: { type: keyof FormState; payload:
   }
 };
 
-export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealthProviderFormProps) {
+export default function CreateNewHealthProviderForm({
+  update,
+  onClose,
+  initialState,
+}: CreateNewHealthProviderFormProps) {
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
   const [user] = useAuthState(firebaseAuth);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = useCallback(() => {
-    // dispatch all fields to check for errors
+  useEffect(() => {
+    if (!initialState) return;
+    dispatch({ type: 'city', payload: initialState.city });
+    dispatch({ type: 'name', payload: initialState.name });
+    dispatch({ type: 'wait_time', payload: initialState.wait_time.toString() });
+    dispatch({ type: 'start_time', payload: initialState.start_time });
+    dispatch({ type: 'end_time', payload: initialState.end_time });
+  }, [initialState]);
+
+  const isValid = useCallback(() => {
     Object.keys(formState).forEach((field) => {
       dispatch({ type: field as keyof FormState, payload: formState[field as keyof typeof formState].value });
     });
@@ -121,7 +144,37 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
       .map((ele) => Object.values(ele).some((field: any) => field.error !== ''))
       .some((ele) => ele);
 
-    if (hasError) return;
+    return !hasError;
+  }, [formState]);
+
+  const handleUpdate = useCallback(() => {
+    if (!isValid()) return;
+
+    console.log('update');
+    // construct form data only from pick fields
+    const docData: Partial<HealthProviderDoc> = {
+      city: formState.city.value,
+      name: formState.name.value,
+      wait_time: parseInt(formState.wait_time.value),
+      start_time: formState.start_time.value,
+      end_time: formState.end_time.value,
+    };
+
+    async function updateHealthProvider() {
+      invariant(user, 'User must be logged in to update a health provider');
+
+      setLoading(true);
+      const docRef = doc(collection(firestore, healthProvidersCol), initialState?.uid);
+      await updateDoc(docRef, docData);
+      setLoading(false);
+      onClose();
+    }
+
+    updateHealthProvider();
+  }, [formState]);
+
+  const handleSubmit = useCallback(() => {
+    if (!isValid()) return;
 
     const docRef = doc(collection(firestore, healthProvidersCol));
 
@@ -171,7 +224,7 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
     }
 
     createHealthProvider();
-  }, [formState]);
+  }, [formState, isValid]);
 
   return (
     <Flex
@@ -181,15 +234,17 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
       gap={4}
       onSubmit={(e) => {
         e.preventDefault();
-        handleSubmit();
+        update ? handleUpdate() : handleSubmit();
       }}
     >
       <FormControl isInvalid={formState.city.error !== ''}>
         <FormLabel>City</FormLabel>
         <Select
           variant={'filled'}
+          value={{ label: formState.city.value, value: formState.city.value }}
           onChange={(val) => dispatch({ type: 'city', payload: val?.value || '' })}
           options={Object.keys(healthCareProviders).map((city) => ({ label: city, value: city }))}
+          isDisabled={update}
         />
         <FormErrorMessage>{formState.city.error}</FormErrorMessage>
       </FormControl>
@@ -205,7 +260,7 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
             })
           )}
           onChange={(val) => dispatch({ type: 'name', payload: val?.value || '' })}
-          isDisabled={!formState.city.value}
+          isDisabled={!formState.city.value || update}
         />
         <FormErrorMessage>{formState.name.error}</FormErrorMessage>
       </FormControl>
@@ -254,7 +309,7 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
           Cancel
         </Button>
         <Button colorScheme="blue" type="submit" isLoading={loading}>
-          Create
+          {update ? 'Update' : 'Create'}
         </Button>
       </HStack>
     </Flex>
