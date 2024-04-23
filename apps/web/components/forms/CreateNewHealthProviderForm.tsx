@@ -119,7 +119,7 @@ export default function CreateNewHealthProviderForm({ onClose }: CreateNewHealth
 
     const hasError = immediateUpdatedState.some((field: any) => field.error !== '');
 
-    if (!hasError) return;
+    if (hasError) return;
 
     const docRef = doc(collection(firestore, healthProvidersCol));
 
