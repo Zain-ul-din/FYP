@@ -28,10 +28,12 @@ import { firebaseAuth, firestore } from '@/lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import invariant from 'invariant';
 import { healthProvidersCol } from '@/lib/firebase/collections';
+import timeToStr from '@/lib/util/timeToStr';
+import HospitalResType from '@/types/HospitalResType';
 
 interface FormState
   extends Record<
-    keyof Pick<HealthProviderDoc, 'city' | 'name' | 'wait_time' | 'start_time' | 'end_time'>,
+    keyof Pick<HealthProviderDoc, 'city' | 'name' | 'wait_time' | 'start_time' | 'end_time' | 'fee'>,
     InputState
   > {}
 
@@ -47,6 +49,7 @@ const initialFormState: FormState = {
   wait_time: { value: '15', error: '' },
   start_time: { value: '08:00', error: '' },
   end_time: { value: '00:00', error: '' },
+  fee: { value: '0', error: '' },
 };
 
 const formReducer = (state: FormState, action: { type: keyof FormState; payload: string }): FormState => {
@@ -77,6 +80,17 @@ const formReducer = (state: FormState, action: { type: keyof FormState; payload:
       return {
         ...state,
         wait_time: {
+          value: action.payload,
+          error: waitTimeError,
+        },
+      };
+    }
+    case 'fee': {
+      const fee = parseInt(action.payload);
+      const waitTimeError = fee >= 0 ? '' : 'Invalid Fee missing';
+      return {
+        ...state,
+        fee: {
           value: action.payload,
           error: waitTimeError,
         },
@@ -118,6 +132,23 @@ export default function CreateNewHealthProviderForm({
   const [user] = useAuthState(firebaseAuth);
   const [loading, setLoading] = useState(false);
 
+  const [loadingHospitals, setLoadingHospitals] = useState<boolean>(false);
+  const [hospitals, setHospitals] = useState<HospitalResType[]>([]);
+
+  useEffect(() => {
+    const url = `/api/hospitals?city=${formState.city.value}`;
+    setLoadingHospitals(true);
+    fetch(url)
+      .then((res) => res.json())
+      .then(({ hospitals }) => {
+        setLoadingHospitals(false);
+        setHospitals(hospitals as HospitalResType[]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [formState]);
+
   useEffect(() => {
     if (!initialState) return;
     dispatch({ type: 'city', payload: initialState.city });
@@ -150,7 +181,6 @@ export default function CreateNewHealthProviderForm({
   const handleUpdate = useCallback(() => {
     if (!isValid()) return;
 
-    console.log('update');
     // construct form data only from pick fields
     const docData: Partial<HealthProviderDoc> = {
       city: formState.city.value,
@@ -180,6 +210,11 @@ export default function CreateNewHealthProviderForm({
 
     invariant(user, 'User must be logged in to create a health provider');
 
+    const hospital = hospitals.reduce((acc, curr) => {
+      if (formState.name.value === curr.name) return curr;
+      return acc;
+    });
+
     // construct form data
     const docData: HealthProviderDoc = {
       city: formState.city.value,
@@ -187,13 +222,13 @@ export default function CreateNewHealthProviderForm({
       wait_time: parseInt(formState.wait_time.value),
       start_time: formState.start_time.value,
       end_time: formState.end_time.value,
-      about: 'This hospital is a great place to get treated.',
+      about: hospital.name || 'This hospital is a great place to get treated.',
       created_at: serverTimestamp(),
       updated_at: serverTimestamp(),
       doctor_id: user.uid,
-      googleLocLink: 'https://google.com',
-      helpLine: '042-1234567',
-      location: 'Lahore Gurberg',
+      googleLocLink: hospital.googleLocLink,
+      helpLine: hospital.helpLine,
+      location: hospital.location,
       monday: [],
       tuesday: [],
       wednesday: [],
@@ -202,6 +237,8 @@ export default function CreateNewHealthProviderForm({
       saturday: [],
       sunday: [],
       uid: docRef.id,
+      fee: parseInt(formState.fee.value),
+      avatar: hospital.avatar,
     };
 
     async function createHealthProvider() {
@@ -251,18 +288,28 @@ export default function CreateNewHealthProviderForm({
       <FormControl isInvalid={formState.name.error !== ''}>
         <FormLabel>Health Provider</FormLabel>
         <Select
+          isLoading={loadingHospitals}
           variant={'filled'}
           value={{ label: formState.name.value, value: formState.name.value }}
-          options={(healthCareProviders[formState.city.value as keyof typeof healthCareProviders] || []).map(
-            (provider) => ({
-              label: provider.name,
-              value: provider.name,
-            })
-          )}
+          options={hospitals.map((provider) => ({
+            label: provider.name,
+            value: provider.name,
+          }))}
           onChange={(val) => dispatch({ type: 'name', payload: val?.value || '' })}
           isDisabled={!formState.city.value || update}
         />
         <FormErrorMessage>{formState.name.error}</FormErrorMessage>
+      </FormControl>
+      <FormControl isInvalid={formState.fee.error !== ''}>
+        <FormLabel>Appointment Fee</FormLabel>
+        <Input
+          placeholder="Enter Appointment Fee"
+          defaultValue={0}
+          variant={'filled'}
+          type="number"
+          onChange={(e) => dispatch({ type: 'fee', payload: e.target.value })}
+        />
+        <FormErrorMessage>{formState.fee.error}</FormErrorMessage>
       </FormControl>
       <FormControl isInvalid={formState.wait_time.error !== ''}>
         <FormLabel>Wait time</FormLabel>
@@ -284,7 +331,7 @@ export default function CreateNewHealthProviderForm({
             onChange={(hour, minute) =>
               dispatch({
                 type: 'start_time',
-                payload: `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`,
+                payload: timeToStr(hour, minute),
               })
             }
           />
@@ -297,7 +344,7 @@ export default function CreateNewHealthProviderForm({
             onChange={(hour, minute) =>
               dispatch({
                 type: 'end_time',
-                payload: `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`,
+                payload: timeToStr(hour, minute),
               })
             }
           />

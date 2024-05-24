@@ -24,7 +24,7 @@ export default function Page({ params: { slug } }: { params: { slug: string } })
         {days.map((day, i) => (
           <AccordionItem key={i}>
             <h2>
-              <AccordionButton _expanded={{ bg: 'var(--red-grad)', color: 'white' }}>
+              <AccordionButton _expanded={{ bg: 'var(--blue-grad)', color: 'white' }}>
                 <Box as="span" flex="1" textAlign="left">
                   {day} timetable
                 </Box>

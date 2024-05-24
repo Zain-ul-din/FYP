@@ -1,0 +1,39 @@
+[
+  {
+    "city": "video-consultation",
+    "name": "Online Video Consultation",
+    "location": "Speak to doctor through a video call",
+    "helpLine": "tel:04238900939",
+    "about": "Online Video Consultation is a state of the art hospital located in the heart of Video Consultation. There are total 5194 panel doctors, out of which 4358 doctors are currently bookable at oladoc.com.The rest of the 836 doctors practicing at Online Video Consultation are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1641992310_downloadddd.png"
+  },
+  {
+    "city": "video-consultation",
+    "name": "oladoc Care Video Consultation",
+    "location": "Speak To Doctor Through A Video Call",
+    "helpLine": "tel:04238900939",
+    "about": "Book Video Consultation with Top Specialist Doctors in Rs. 1000 ONLY! #oladocCares",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1597316272_WhatsAppImage2020-08-13at3.52.45PM.jpeg"
+  },
+  {
+    "city": "video-consultation",
+    "name": "Online Psychological Services",
+    "location": "Speak to doctor through a video call",
+    "helpLine": "tel:02138140600",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=30.526855282024535, 70.04824099999998",
+    "about": "Online Psychological Services is a state of the art hospital located in the heart of Video Consultation. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "02138140600                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "video-consultation",
+    "name": "Oladoc Partner Clinic",
+    "location": "Speak To Doctor Through A Video Call",
+    "helpLine": "tel:04238900939",
+    "about": "Oladoc Partner Clinic is a state of the art hospital located in the heart of Video Consultation. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  }
+]

@@ -5,9 +5,21 @@ import conditions from '@/lib/constants/conditions';
 import doctor_titles from '@/lib/constants/doctor_titles';
 import specializations from '@/lib/constants/specializations';
 import InputState from '@/types/InputState';
-import { Button, Flex, FlexProps, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react';
+import {
+  Button,
+  Center,
+  Flex,
+  FlexProps,
+  FormControl,
+  FormErrorMessage,
+  Heading,
+  FormLabel,
+  HStack,
+  Input,
+} from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
-import { FormEvent, useReducer, useCallback } from 'react';
+import { FormEvent, useReducer, useCallback, useState } from 'react';
+import Logo from './icons/Logo';
 
 interface JoinAsDoctorFormProps extends FlexProps {}
 
@@ -131,15 +143,23 @@ const formReducer = (
 
 export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
-
+  const [loading, setLoading] = useState<boolean>(false);
+  
   const submitForm = useCallback(
-    (e: FormEvent<HTMLDivElement>) => {
+    async (e: FormEvent<HTMLDivElement>) => {
       e.preventDefault();
+      let hasError = false;
       Object.entries(formState).forEach(([key, value]) => {
-        dispatch({ type: key as keyof FormState, payload: value.value });
+        const _key = key as keyof FormState;
+        const updatedState = formReducer(formState, { type: _key, payload: value.value });
+        if (updatedState[_key].error) hasError = true;
+        dispatch({ type: _key, payload: value.value });
       });
 
-      createDoctorAction({
+      if (hasError) return;
+
+      setLoading(true);
+      await createDoctorAction({
         title: formState.title.value,
         fullName: formState.fullName.value,
         yearOfExperience: formState.yearOfExperience.value,
@@ -148,125 +168,134 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
         conditionsTreated: formState.conditionsTreated.value,
         pmdcRegistrationNumber: formState.pmdcRegistrationNumber.value,
       });
+      setLoading(false);
     },
     [formState]
   );
 
   return (
-    <Flex
-      flexWrap={'wrap'}
-      px={2}
-      py={8}
-      mx={'auto'}
-      maxW={'800px'}
-      gap={4}
-      {...rest}
-      as={'form'}
-      onSubmit={submitForm}
-    >
-      <FormControl isInvalid={formState.title.error !== ''}>
-        <FormLabel>Title</FormLabel>
-        <Select
-          variant={'filled'}
-          options={doctor_titles.map((title) => ({ label: title, value: title }))}
-          onChange={(value) => dispatch({ type: 'title', payload: value?.value || '' })}
-          value={{ value: formState.title.value, label: formState.title.value }}
-        />
-        <FormErrorMessage>{formState.title.error}</FormErrorMessage>
-      </FormControl>
+    <>
+      <Center pt={6}>
+        <HStack>
+          <Logo width={50} height={50} />
+          <Heading fontSize={'3xl'}>Join Dokto</Heading>
+        </HStack>
+      </Center>
+      <Flex
+        flexWrap={'wrap'}
+        px={2}
+        py={8}
+        mx={'auto'}
+        maxW={'800px'}
+        gap={4}
+        {...rest}
+        as={'form'}
+        onSubmit={submitForm}
+      >
+        <FormControl isInvalid={formState.title.error !== ''}>
+          <FormLabel>Title</FormLabel>
+          <Select
+            variant={'filled'}
+            options={doctor_titles.map((title) => ({ label: title, value: title }))}
+            onChange={(value) => dispatch({ type: 'title', payload: value?.value || '' })}
+            value={{ value: formState.title.value, label: formState.title.value }}
+          />
+          <FormErrorMessage>{formState.title.error}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={formState.fullName.error !== ''}>
-        <FormLabel>Full Name</FormLabel>
-        <Input
-          variant={'filled'}
-          placeholder="Enter full name"
-          onChange={(e) => {
-            dispatch({ type: 'fullName', payload: e.target.value });
-          }}
-          value={formState.fullName.value}
-        />
-        <FormErrorMessage>{formState.fullName.error}</FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={formState.fullName.error !== ''}>
+          <FormLabel>Full Name</FormLabel>
+          <Input
+            variant={'filled'}
+            placeholder="Enter full name"
+            onChange={(e) => {
+              dispatch({ type: 'fullName', payload: e.target.value });
+            }}
+            value={formState.fullName.value}
+          />
+          <FormErrorMessage>{formState.fullName.error}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={formState.yearOfExperience.error !== ''}>
-        <FormLabel>Year of Experience</FormLabel>
-        <Input
-          variant={'filled'}
-          placeholder="Enter year of experience"
-          type="number"
-          onChange={(e) => {
-            dispatch({ type: 'yearOfExperience', payload: e.target.value });
-          }}
-          value={formState.yearOfExperience.value}
-        />
+        <FormControl isInvalid={formState.yearOfExperience.error !== ''}>
+          <FormLabel>Year of Experience</FormLabel>
+          <Input
+            variant={'filled'}
+            placeholder="Enter year of experience"
+            type="number"
+            onChange={(e) => {
+              dispatch({ type: 'yearOfExperience', payload: e.target.value });
+            }}
+            value={formState.yearOfExperience.value}
+          />
 
-        <FormErrorMessage>{formState.yearOfExperience.error}</FormErrorMessage>
-      </FormControl>
+          <FormErrorMessage>{formState.yearOfExperience.error}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={formState.primarySpecialization.error !== ''}>
-        <FormLabel>Primary Specialization</FormLabel>
-        <Select
-          variant={'filled'}
-          onChange={(value) => dispatch({ type: 'primarySpecialization', payload: value?.value || '' })}
-          options={specializations.map((specialization) => ({ label: specialization, value: specialization }))}
-          value={{ value: formState.primarySpecialization.value, label: formState.primarySpecialization.value }}
-        />
-        <FormErrorMessage>{formState.primarySpecialization.error}</FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={formState.primarySpecialization.error !== ''}>
+          <FormLabel>Primary Specialization</FormLabel>
+          <Select
+            variant={'filled'}
+            onChange={(value) => dispatch({ type: 'primarySpecialization', payload: value?.value || '' })}
+            options={specializations.map((specialization) => ({ label: specialization, value: specialization }))}
+            value={{ value: formState.primarySpecialization.value, label: formState.primarySpecialization.value }}
+          />
+          <FormErrorMessage>{formState.primarySpecialization.error}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={formState.secondarySpecializations.error !== ''}>
-        <FormLabel>Secondary Specialization</FormLabel>
-        <Select
-          variant={'filled'}
-          options={specializations
-            .map((specialization) => ({ label: specialization, value: specialization }))
-            .filter((specialization) => specialization.value !== formState.primarySpecialization.value)}
-          onChange={(value) => dispatch({ type: 'secondarySpecializations', payload: value?.value || '' })}
-          value={{ value: formState.secondarySpecializations.value, label: formState.secondarySpecializations.value }}
-        />
-        <FormErrorMessage>{formState.secondarySpecializations.error}</FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={formState.secondarySpecializations.error !== ''}>
+          <FormLabel>Secondary Specialization</FormLabel>
+          <Select
+            variant={'filled'}
+            options={specializations
+              .map((specialization) => ({ label: specialization, value: specialization }))
+              .filter((specialization) => specialization.value !== formState.primarySpecialization.value)}
+            onChange={(value) => dispatch({ type: 'secondarySpecializations', payload: value?.value || '' })}
+            value={{ value: formState.secondarySpecializations.value, label: formState.secondarySpecializations.value }}
+          />
+          <FormErrorMessage>{formState.secondarySpecializations.error}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={formState.conditionsTreated.error !== ''}>
-        <FormLabel>Conditions Treated</FormLabel>
-        <Select
-          variant={'filled'}
-          options={[formState.primarySpecialization, formState.secondarySpecializations]
-            .map((a) => a.value)
-            .map((specialization) =>
-              (conditions[specialization as keyof typeof conditions] || []).map((condition) => ({
-                label: condition,
-                value: condition,
-              }))
-            )
-            .flat()}
-          isMulti
-          isDisabled={!formState.primarySpecialization.value && !formState.secondarySpecializations.value}
-          onChange={(value) => dispatch({ type: 'conditionsTreated', payload: value?.map((v) => v.value) || [] })}
-          value={formState.conditionsTreated.value.map((condition) => ({ label: condition, value: condition }))}
-        />
-        <FormErrorMessage>{formState.conditionsTreated.error}</FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={formState.conditionsTreated.error !== ''}>
+          <FormLabel>Conditions Treated</FormLabel>
+          <Select
+            variant={'filled'}
+            options={[formState.primarySpecialization, formState.secondarySpecializations]
+              .map((a) => a.value)
+              .map((specialization) =>
+                (conditions[specialization as keyof typeof conditions] || []).map((condition) => ({
+                  label: condition,
+                  value: condition,
+                }))
+              )
+              .flat()}
+            isMulti
+            isDisabled={!formState.primarySpecialization.value && !formState.secondarySpecializations.value}
+            onChange={(value) => dispatch({ type: 'conditionsTreated', payload: value?.map((v) => v.value) || [] })}
+            value={formState.conditionsTreated.value.map((condition) => ({ label: condition, value: condition }))}
+          />
+          <FormErrorMessage>{formState.conditionsTreated.error}</FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={formState.pmdcRegistrationNumber.error !== ''}>
-        <FormLabel>PMDC registration number</FormLabel>
-        <Input
-          variant={'filled'}
-          placeholder="Enter PMDC registration number"
-          type="number"
-          onChange={(e) => {
-            dispatch({ type: 'pmdcRegistrationNumber', payload: e.target.value });
-          }}
-          minLength={10}
-          maxLength={10}
-          value={formState.pmdcRegistrationNumber.value}
-        />
-        <FormErrorMessage>{formState.pmdcRegistrationNumber.error}</FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={formState.pmdcRegistrationNumber.error !== ''}>
+          <FormLabel>PMDC registration number</FormLabel>
+          <Input
+            variant={'filled'}
+            placeholder="Enter PMDC registration number"
+            type="number"
+            onChange={(e) => {
+              dispatch({ type: 'pmdcRegistrationNumber', payload: e.target.value });
+            }}
+            minLength={10}
+            maxLength={10}
+            value={formState.pmdcRegistrationNumber.value}
+          />
+          <FormErrorMessage>{formState.pmdcRegistrationNumber.error}</FormErrorMessage>
+        </FormControl>
 
-      <Button type="submit" colorScheme="blue" mx={'auto'}>
-        Submit
-      </Button>
-    </Flex>
+        <Button type="submit" my={5} variant={'red'} colorScheme="blue" mx={'auto'} isLoading={loading}>
+          Submit
+        </Button>
+      </Flex>
+    </>
   );
 }

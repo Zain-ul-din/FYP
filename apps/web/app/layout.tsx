@@ -1,9 +1,7 @@
 import { ChakraClientProvider } from '@/providers/ChakraClientProvider';
-import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import '../app/globals.css';
+import { LufgaFont } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Create Turborepo',
@@ -13,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={LufgaFont.className}>
         <ChakraClientProvider>{children}</ChakraClientProvider>
       </body>
     </html>

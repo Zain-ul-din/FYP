@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Flex, Card, Heading, Divider } from '@chakra-ui/react';
+import timeToStr from '@/lib/util/timeToStr';
 
 interface TimeSlot {
   time: string;
@@ -41,7 +42,7 @@ export default function AppointmentTimetable({
     for (let time = startTimeInMinutes; time < endTimeInMinutes; time += waitTime) {
       const hours: number = Math.floor(time / 60) % 24; // Handle overflow for multiple days
       const minutes: number = time % 60;
-      const formattedTime: string = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+      const formattedTime: string = timeToStr(hours, minutes);
       setSlots((slot) => [...slot, { time: formattedTime }]);
     }
   }, [start_time, end_time, waitTime]);
@@ -87,7 +88,7 @@ export default function AppointmentTimetable({
           p={2}
           key={slot.time}
           style={{
-            background: selectedSlots.some((s) => s.time === slot.time) ? 'var(--red-grad)' : 'transparent',
+            background: selectedSlots.some((s) => s.time === slot.time) ? 'var(--blue-grad)' : 'transparent',
             color: selectedSlots.some((s) => s.time === slot.time) ? 'white' : 'black',
             cursor: 'pointer',
           }}

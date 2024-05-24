@@ -1,0 +1,907 @@
+[
+  {
+    "city": "gujranwala",
+    "name": "Bhatti Hospital",
+    "location": "Munir Chowk, Kachehry Road, Near UBL Bank, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.1671892770907, 74.19324538895492",
+    "about": "Bhatti Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 15 panel doctors, out of which 11 doctors are currently bookable at oladoc.com.The rest of the 4 doctors practicing at Bhatti Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1635602143_download.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Central Hospital (Gujranwala)",
+    "location": "Grand Trunk Road, Jinnah Colony, Gujranwala,",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.132195658298805, 74.1938781",
+    "about": "Central Hospital (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There are total 18 panel doctors, out of which 8 doctors are currently bookable at oladoc.com.The rest of the 10 doctors practicing at Central Hospital (Gujranwala) are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1601036023_Central-Hospital-Gujranwala.gif"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Medcare International Hospital",
+    "location": "Gill Road, Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17713307145034, 74.18987061534426",
+    "about": "Medcare International Hospital  is a state of the art hospital located in the heart of Gujranwala. There are total 21 panel doctors, out of which 7 doctors are currently bookable at oladoc.com.The rest of the 14 doctors practicing at Medcare International Hospital  are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1601036261_Madcare-International-Hospital.gif"
+  },
+  {
+    "city": "gujranwala",
+    "name": "New Gondal Hospital",
+    "location": "Hospital Road, Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16669892796365, 74.19178695826646",
+    "about": "New Gondal Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 10 panel doctors, out of which 6 doctors are currently bookable at oladoc.com.The rest of the 4 doctors practicing at New Gondal Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Gondal Medical Complex",
+    "location": "Hospital Road, Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16671709194004, 74.19184328465576",
+    "about": "Gondal Medical Complex is a state of the art hospital located in the heart of Gujranwala. There are total 24 panel doctors, out of which 4 doctors are currently bookable at oladoc.com.The rest of the 20 doctors practicing at Gondal Medical Complex are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "042 38900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1601036098_Gondal-Hospital.gif"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Siddique Family Hospital",
+    "location": "Rahwali Cantt, Main GT Road, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.2368453499805, 74.16683319999997",
+    "about": "Siddique Family Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 3 panel doctors, out of which 4 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Cheema Heart Complex and General Hospital",
+    "location": "Mian Zia ul Haq Road, Near Lords Hotel, District Courts Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16811289999998, 74.19495585767208",
+    "about": "Cheema Heart Complex and General Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 16 panel doctors, out of which 3 doctors are currently bookable at oladoc.com.The rest of the 13 doctors practicing at Cheema Heart Complex and General Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "Mon to Sun : 8.30AM - 10PM",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1601036124_Cheema-Heart-&-Complex-Gujranwala.gif"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Muhammad Ali Family Hospital",
+    "location": "Opposite DCO office، Sialkot Rd, Block A Satellite Town, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16615172948913, 74.1957585803566",
+    "about": "Muhammad Ali Family Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 7 panel doctors, out of which 3 doctors are currently bookable at oladoc.com.The rest of the 4 doctors practicing at Muhammad Ali Family Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Azeem Medical Complex Gujranwala",
+    "location": "Hospital Rd, near Munir Chowk, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.165295023194595, 74.19054402883609",
+    "about": "Azeem Medical Complex Gujranwala is a state of the art hospital located in the heart of Gujranwala. There are total 4 panel doctors, out of which 3 doctors are currently bookable at oladoc.com.The rest of the 1 doctors practicing at Azeem Medical Complex Gujranwala are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Mazhar Memorial Hospital",
+    "location": "Sialkot Road, opposite Deputy Commissioner Office, Block A Satellite Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16640861240454, 74.19616627301637",
+    "about": "Mazhar Memorial Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 3 panel doctors, out of which 3 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "0553850026                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Salamat Hospital",
+    "location": "126 Ghulam Dastagir Khan Road, Block-D, Satellite Town, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.1636640291738, 74.2090528",
+    "about": "Salamat Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 3 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Chaudhary Hospital",
+    "location": "28-D, Settelite Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16803229115336, 74.2031518",
+    "about": "Chaudhary Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 9 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.The rest of the 7 doctors practicing at Chaudhary Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "042 38900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1601036080_Chaudry-Hospital-Gujranwala-(1).gif"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Chattha Hospital",
+    "location": "Chattha Hospital,27/1 Hospital Road, Chatha Colony Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17282117660979, 74.19511517301635",
+    "about": "Chattha Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 7 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.The rest of the 5 doctors practicing at Chattha Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "042 38900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Fazil Memorial Hospital",
+    "location": "Munir Chowk Civil Lines Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16688550819329, 74.19187708465574",
+    "about": "Fazil Memorial Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 3 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.The rest of the 1 doctors practicing at Fazil Memorial Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Aahil Aesthetics and Gyne-Obs Clinic",
+    "location": "Aahil Aesthetics, 1st Floor, Bin Islam pharmacy, Nursery Chowk, Dastageer Road, Satellite Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16602540000001, 74.20676948773153",
+    "about": "Aahil Aesthetics and Gyne-Obs Clinic is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Gujranwala Medical and Dental Complex",
+    "location": "Gujranwala Medical and Dental Complex, 60 Main Road, Sector X, Peoples Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.13639620000003, 74.20774",
+    "about": "Gujranwala Medical and Dental Complex is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Doctors Space",
+    "location": "Doctors Space, Plot No. 69 and 70, Commercial Block CC, Phase 1, Citi Housing, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.06692832701965, 74.19073294662705",
+    "about": "Doctors Space is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al-Shifa Hospital (Gujranwala)",
+    "location": "Al-Shifa Hospital , Block B, Satellite Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.163933500000006, 74.20184387668647",
+    "about": "Al-Shifa Hospital (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Naveed Medical Complex",
+    "location": "Sialkot Bypass, Opposite Sheikh Sadique Eye Hospital, Usman Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.193269700000016, 74.21182545767213",
+    "about": "Naveed Medical Complex is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 2 doctors are currently bookable at oladoc.com.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Winner Health Care Hospital",
+    "location": "153-A Block, Wapda Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.094232319664016, 74.18766562698364",
+    "about": "Winner Health Care Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 3 panel doctors, out of which 1 doctors are currently bookable at oladoc.com.The rest of the 2 doctors practicing at Winner Health Care Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Siddique Sadiq Memorial Trust Hospital",
+    "location": "Sheikhupura Rd, Ittefaq Colony, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.13548642125739, 74.18441864232796",
+    "about": "Siddique Sadiq Memorial Trust Hospital is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 1 doctors are currently bookable at oladoc.com.The rest of the 1 doctors practicing at Siddique Sadiq Memorial Trust Hospital are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/1601036235_Sissique-Sadiq-Hospital.gif"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Rehman Medical Complex (Gujranwala)",
+    "location": "Rehman Medical Complex, 70-X, Kashmir Chowk, Super Market, Peoples Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.138270100000014, 74.2037139067459",
+    "about": "Rehman Medical Complex (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 1 doctors are currently bookable at oladoc.com.The rest of the 1 doctors practicing at Rehman Medical Complex (Gujranwala) are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Gondal Diagnostic Center",
+    "location": "Hospital Road, Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16676448854901, 74.1918885469329",
+    "about": "Gondal Diagnostic Center is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 1 doctors are currently bookable at oladoc.com.The rest of the 1 doctors practicing at Gondal Diagnostic Center are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "National Hospital (Gujranwala)",
+    "location": "42-43 New, Gill Road, Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17133713694845, 74.19332517301632",
+    "about": "National Hospital (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There are total 2 panel doctors, out of which 1 doctors are currently bookable at oladoc.com.The rest of the 1 doctors practicing at National Hospital (Gujranwala) are non-bookable from the website.For further information regarding appointments with these doctors, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al Khair Welfare Hospital",
+    "location": "Al Khair Welfare Hospital, Jinnah Road, Rasulpura, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.15650495849751, 74.17282702883604",
+    "about": "Al Khair Welfare Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Reach For Peace Clinic",
+    "location": "Reach For Peace Clinic, Block E, Phase 2, Citi Housing, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.07463817346901, 74.19889966011887",
+    "about": "Reach For Peace Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Ali Family Clinic",
+    "location": "Ali Family Clinic, Vania Mor, Sialkot Road, Near Mughal Chowk, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "about": "Ali Family Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "CMH (Gujranwala)",
+    "location": "Nishan-E-Manzil, CMH Road, Rahwali Cantonment, Rahwali Cantonments, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.24834463557522, 74.1154195411045",
+    "about": "CMH (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Life Line Hospital Gujranwala",
+    "location": "Commissioner Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "about": "Life Line Hospital Gujranwala is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Skin Fix Aesthetic Clinic",
+    "location": "Master City Housing Scheme, Near Masjid Master City, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.12878152784178, 74.23226247724607",
+    "about": "Skin Fix Aesthetic Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Medcare Polyclinic",
+    "location": "Sialkot Road, Near Naeem Electronics, Khokharki, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17732962372388, 74.2020617",
+    "about": "Medcare Polyclinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "GMT Hearing Aids Center",
+    "location": "Opposite Main Gate Hospital, Near National Bank, Civil Branch 2, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16950227042742, 74.19263264662703",
+    "about": "GMT Hearing Aids Center is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Muhammad Clinic (Gujranwala)",
+    "location": "Muhammad Clinic, Jallan, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.07263208271072, 73.81788835398463",
+    "about": "Muhammad Clinic (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "03334976314                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Khokhar Hospital",
+    "location": "Khokhar Hospital, Hospital Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16717000572837, 74.19140756441804",
+    "about": "Khokhar Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Kalsoom Tufail Family Hospital",
+    "location": "Main Hafizabad Road, Near Total Petrol Pump, Qila Didar Singh, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.134499232175166, 74.02391597055225",
+    "about": "Kalsoom Tufail Family Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Medline Clinic - Dr. Fowad",
+    "location": "Zia ul Haq Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16826156366844, 74.19483430000001",
+    "about": "Medline Clinic - Dr. Fowad is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Shapes Gym (Gujranwala)",
+    "location": "Shapes Gym, Block 3 Phase B, Wapda Town, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.09244500000001, 74.18499661165679",
+    "about": "Shapes Gym (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "K - Clinic",
+    "location": "Noora, Raj Kot Rd, Ghakhar, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.30020233395484, 74.13880082361938",
+    "about": "K - Clinic  is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "03422829000                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Ayat Medical Complex",
+    "location": "Ayat Medical Complex, Sui Gass Road, Opposite Imam Bargha, Street No. 8, Faisal Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.19992640000002, 74.1842937932541",
+    "about": "Ayat Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Dr Aqsa Ali - Child Care Clinic",
+    "location": "Besides Chand Kanda, Hafizabad Road, Opposite Millat Ideal School, Baghbanpura, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.15698690000001, 74.1755364411045",
+    "about": "Dr Aqsa Ali - Child Care Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Umeed-e-Nau Clinic",
+    "location": "Umeed-e-Nau Clinic, Opposite Board of Intermediate & Secondary Education, Near Chenab College, Lohian Wala, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.203427969581455, 74.18869918220902",
+    "about": "Umeed-e-Nau Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Muhammad Ali Clinic (Gujranwala)",
+    "location": "Muhammad Ali Clinic, Street No. 5, College Road, Gobandgarh, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.166125658976995, 74.17533953435859",
+    "about": "Muhammad Ali Clinic (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Zaryab Medical Complex",
+    "location": "Zaryab Medical Complex, Islamabad Moor, Near Gul Marriage Hall, C4VG+333, Sialkot Wazirabad Road, Hajipura, Wazirabad, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.44244488510019, 74.1255515092621",
+    "about": "Zaryab Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Jalil Ortho and General Hospital",
+    "location": "Kachery Road, Munir Chowk, Near UBL Bank, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16706671956962, 74.19357560000002",
+    "about": "Jalil Ortho and General Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al Aziz Medical and Dental Complex",
+    "location": "Haram City, Miraj Pura Gondalawala, Alipur Chatha Road, Mairajpura, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.19303328888639, 74.13824163988114",
+    "about": "Al Aziz Medical and Dental Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Mushtaq Physiotherapy Center",
+    "location": "Mushtaq Physiotherapy Center, Civil Lines, Gujranwala, Punjab.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.18276694609508, 74.18959255337295",
+    "about": "Mushtaq Physiotherapy Center is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Sikandar Medical Complex",
+    "location": "GT Road, Judicial Housing Colony, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.10168020385143, 74.18999222513116",
+    "about": "Sikandar Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Madina Welfare Hospital",
+    "location": "Madina Welfare Hospital, Wahndo Road, Gujranwala Road, Near Islamia High School, Eminabad, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "about": "Madina Welfare Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Yasin Clinic",
+    "location": "Main Munir Chowk, Near Saint Marry Girls High School, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.1734895, 74.19151770000002",
+    "about": "Yasin Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Razia Shafi Critical Care Medical Centre",
+    "location": "Main GT Road, Pak Town, Kamoke, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=31.986153699999985, 74.21984789999998",
+    "about": "Razia Shafi Critical Care Medical Centre is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Fatima Bashir Hospital",
+    "location": "N5, Ghakhar, Wazirabad, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.30699373595338, 74.14743247116394",
+    "about": "Fatima Bashir Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "042 38900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Amna Muraad Hospital",
+    "location": "3D Ghulam Dastagir Khan Road, Abu Bakar Town, Khokhar Ke, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.1685535, 74.20000780000001",
+    "about": "Amna Muraad Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Molana Zafar Ali Khan Trust Hospital",
+    "location": "Disposal Road, Judicial Housing Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.10370612959678, 74.1903496",
+    "about": "Molana Zafar Ali Khan Trust Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Aziz Dental Surgery (Gujranwala)",
+    "location": "426-B, Model Town, Opp. Al-Meeraj Fan, Gujranwala Road, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17098918156184, 74.1759361",
+    "about": "Aziz Dental Surgery (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Care n Cure Hospital",
+    "location": "Gill Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.179590200000014, 74.18941649999998",
+    "about": "Care n Cure Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Chaudhry Family Hospital",
+    "location": "Chaudhry Family Hospital, Ravi Block, DC Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.22868703790219, 74.14524176441805",
+    "about": "Chaudhry Family Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al Sheikh Medical Clinic (Gujranwala)",
+    "location": "Street No 3, Mohallah Chah Bagh, Near Masjid Allah Ho Wali Beside Atta Chaki Garjakh, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17347948246465, 74.1616083521843",
+    "about": "Al Sheikh Medical Clinic (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Ata Memorial Hospital",
+    "location": "Ata Memorial Hospital, Near THQ Hospital, Virkan Road, Nowshera Virkan, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=31.963930400000006, 73.97502860000002",
+    "about": "Ata Memorial Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Nadeem Dental Surgery (Odontocare)",
+    "location": "CP-148 Bank Morr Market, Opposite UBL, Near Car Wash, Rahwali Cantonments, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.246906452033315, 74.12405021534423",
+    "about": "Nadeem Dental Surgery (Odontocare) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Aahil Clinic",
+    "location": "Bazar No # 1, Street No # 18, Arfat Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.15029426902195, 74.19894759999998",
+    "about": "Aahil Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Alnoor Welfare Medical Center (Gujranwala)",
+    "location": "Kangniwala Main Bazar, Near Haveli Hameed Gujjar, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.12052590440307, 74.19056182394255",
+    "about": "Alnoor Welfare Medical Center (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Homoeo Medicare Clinic (Gujranwala)",
+    "location": "Ground Floor, Bhutta Plaza, Islamia College Road, Mohalla Iqbal Gunj, Mohalla Noor Bawa, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.161392400000004, 74.18008782331354",
+    "about": "Homoeo Medicare Clinic (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al Haaj Nasir Trust & Hospital",
+    "location": "Ghordor Road, Rasheed Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "about": "Al Haaj Nasir Trust & Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Rathore Eye Hospital & Medical Complex",
+    "location": "Rathore Eye Hospital & Medical Complex, G.T. Road, Kashmir Colony No 1, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.09769909999999, 74.20075860000003",
+    "about": "Rathore Eye Hospital & Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Razia Shafiq Medical Complex",
+    "location": "Civil Lines Road, Opposite PMA House, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.16582086415507, 74.1913421",
+    "about": "Razia Shafiq Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Haji Ramzan Welfare Hospital",
+    "location": "Faisalabad Road, Mujahidpura. Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.13941394712657, 74.19703638836059",
+    "about": "Haji Ramzan Welfare Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Rehab Care Physiotherapy Clinic",
+    "location": "Near Garrison Gate, Kashmir Colony, Rahwali Cant, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.24438725152994, 74.146147017791",
+    "about": "Rehab Care Physiotherapy Clinic is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Bashir Medical Complex",
+    "location": "Bashir Medical Complex, Al-Waris Plaza, Munir Chowk, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.177519638181394, 74.18122644232788",
+    "about": "Bashir Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Vital Care Hospital (Gujranwala)",
+    "location": "4 Bolan Road, DC Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.238736497670494, 74.16505610000002",
+    "about": "Vital Care Hospital (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Special Needs and Autism Community Centre Gujranwala",
+    "location": "11- W Main boulevard, Sector W People's Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.14416601088185, 74.20856129999997",
+    "about": "Special Needs and Autism Community Centre Gujranwala is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Police Hospital (Gujranwala)",
+    "location": "Police Hospital, Main GT Road, Highway Staff Colony, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.14479996834494, 74.1911233",
+    "about": "Police Hospital (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Minaj Child and Gynacolgy Medical Complex",
+    "location": "Belgium Pharmacy, Wapda Town, C1, 118 Wapda Town, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.09388882768996, 74.18503078220901",
+    "about": "Minaj Child and Gynacolgy Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "0415068065                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Friends Surgical Orthopaedic Hospital",
+    "location": "Opposite Income Tax Office, National Highway 5, Grand Trunk Road, Gulshan Colony. Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.219560399999985, 74.17082552698362",
+    "about": "Friends Surgical Orthopaedic Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al Badar Medical Complex",
+    "location": "Al Badar Medical Complex, Nowshera Virkan, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=31.955877484467003, 73.96837369999999",
+    "about": "Al Badar Medical Complex is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Rehman Medical Clinic (Gujranwala)",
+    "location": "Kinza Lab, Behind Gondal Medical Complex, Munir Chowk, Gujraniwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.1695114, 74.19318569999997",
+    "about": "Rehman Medical Clinic (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Alshifa Surgical and General Hospital",
+    "location": "Alshifa Surgical and General Hospital, Near Ashraf Pharmacy, Main GT Road Kamoke, Opposite Municipal Committee Office, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=31.989071599308318, 74.21939202698364",
+    "about": "Alshifa Surgical and General Hospital is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al-Hadi Medical Center",
+    "location": "Opposite FBR Office, G.T Road. Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.21787366131927, 74.17291875767212",
+    "about": "Al-Hadi Medical Center  is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Dental Cosmetics (Gujranwala)",
+    "location": "DC Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.181709660986535, 74.1912378",
+    "about": "Dental Cosmetics (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Hashmat Memorial Hospital",
+    "location": "near Shelton Hotel, Shaheenabad, GT Road, Gujranwala,",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.18859134927875, 74.17880307546311",
+    "about": "Hashmat Memorial Hospital is a state of the art hospital located in the heart of Gujranwala. There are 6 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "(042) 38900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Rehman Children Care and Medical Complex",
+    "location": "59-B, Model Town, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.171109979802814, 74.1812645821396",
+    "about": "Rehman Children Care and Medical Complex is a state of the art hospital located in the heart of Gujranwala. There are 5 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Jinnah Memorial Trust Hospital",
+    "location": "287/A، Block A Model Town, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17342248923186, 74.17650162698362",
+    "about": "Jinnah Memorial Trust Hospital is a state of the art hospital located in the heart of Gujranwala. There are 5 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Al-Shifa Future Hospital",
+    "location": "Grand Trunk Rd, near Executive Passport Office, Shahkot More, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.22341927948263, 74.17035542750855",
+    "about": "Al-Shifa Future Hospital is a state of the art hospital located in the heart of Gujranwala. There are 2 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Doctors Medical Complex",
+    "location": "Zia ul Haq Road, 33 DHQ Hospital Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17049284264081, 74.19366440000002",
+    "about": "Doctors Medical Complex is a state of the art hospital located in the heart of Gujranwala. There are 2 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "042                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Saleem Hospital",
+    "location": "Commissioner Road, DIG Office, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.17562526220006, 74.1961062846558",
+    "about": "Saleem Hospital is a state of the art hospital located in the heart of Gujranwala. There are 2 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "042 38900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Taiba Hospital (Gujranwala)",
+    "location": "Ferozwala Road, Rasheed Colony, St-No-6, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.15077065222653, 74.2036175",
+    "about": "Taiba Hospital (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There are 2 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Faisal Chaudhary Hospital",
+    "location": "Commissioner Road, Civil Lines, Gujranwala.",
+    "helpLine": "tel:0415068104",
+    "about": "Faisal Chaudhary Hospital is a state of the art hospital located in the heart of Gujranwala. There are 2 panel doctors, all of whom are well trained and highly experienced. These doctors currently cannot be booked directly from our website but can be booked via our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Taj Clinic (Nowshera Virkan)",
+    "location": "Taj Clinic, Nowshera Virkan, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=31.95903070000014, 73.97109347638062",
+    "about": "Taj Clinic (Nowshera Virkan) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Diabetes Heart & Medical Centre (DHMC)",
+    "location": "Infornt of Fazil Hospital, near Munir Chowk, Civil Lines, Gujrawala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.166870076232705, 74.19111576441804",
+    "about": "Diabetes Heart & Medical Centre (DHMC) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Dental Cosmetics (Gujranwala)",
+    "location": "DC Road, Civil Lines, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.181709660986535, 74.1912378",
+    "about": "Dental Cosmetics (Gujranwala) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Taj Clinic (Nowshera Virkan)",
+    "location": "Taj Clinic, Nowshera Virkan, Gujranwala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=31.95903070000014, 73.97109347638062",
+    "about": "Taj Clinic (Nowshera Virkan) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  },
+  {
+    "city": "gujranwala",
+    "name": "Diabetes Heart & Medical Centre (DHMC)",
+    "location": "Infornt of Fazil Hospital, near Munir Chowk, Civil Lines, Gujrawala",
+    "helpLine": "tel:0415068104",
+    "googleLocLink": "https://maps.google.com/maps/search/?api=1&query=32.166870076232705, 74.19111576441804",
+    "about": "Diabetes Heart & Medical Centre (DHMC) is a state of the art hospital located in the heart of Gujranwala. There is 1 panel doctor, for information regarding appointments with doctor, you can call our helpline.",
+    "secondaryContact": "04238900939                                        \n                                        \n                                            Call Mon - Sun, 9am to 11pm",
+    "avatar": "https://d1t78adged64l7.cloudfront.net/images/profile-pics/hospitals/default/hospital1.png"
+  }
+]

@@ -143,7 +143,7 @@ const components = {
   Button: {
     variants: {
       red: {
-        bg: 'var(--red-grad)',
+        bg: 'var(--blue-grad)',
         color: 'white',
         fontSize: '1rem',
         fontWeight: '400',
@@ -202,6 +202,7 @@ const components = {
 export const colors = {
   blue: {
     500: 'rgba(50, 166, 249, 1)',
+    600: 'rgb(37, 99, 235)'
   },
   red: {
     500: '#E71B40',

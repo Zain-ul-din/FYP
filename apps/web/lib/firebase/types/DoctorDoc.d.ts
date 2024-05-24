@@ -19,7 +19,13 @@ export default interface DoctorDoc {
   isVerified?: boolean;
   isRejected?: boolean;
   rejectionReason?: string;
+
+  locations: string[];
+  specialization: string[];
 }
+
+
+
 
 
 

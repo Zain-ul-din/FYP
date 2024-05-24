@@ -26,6 +26,9 @@ export default interface HealthProviderDoc {
   about: string;
   googleLocLink: string;
 
+  fee: number;
+
+  avatar: string;
 }
 
 

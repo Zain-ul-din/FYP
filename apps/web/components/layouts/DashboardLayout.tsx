@@ -15,6 +15,8 @@ import {
   Text,
   HStack,
   Link,
+  Heading,
+  Center,
 } from '@chakra-ui/react';
 import { ReactNode, useEffect, useState } from 'react';
 import OrganizationIcon from '../icons/OrganizationIcon';
@@ -32,6 +34,9 @@ import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon } from '@ch
 import ManageIcons from '../icons/ManageIcon';
 import LinkWrapper from '../shared/LinkWrapper';
 import { usePathname } from 'next/navigation';
+import Logo from '../icons/Logo';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { firebaseAuth } from '@/lib/firebase';
 
 export default function DashboardLayout({ children }: { children?: ReactNode }) {
   const [isMdScreen] = useMediaQuery('(max-width: 850px)');
@@ -39,6 +44,7 @@ export default function DashboardLayout({ children }: { children?: ReactNode }) 
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useTimeout(() => setIsMounted(true), 1000);
+  const [user] = useAuthState(firebaseAuth);
 
   return (
     <Flex w={'100%'} h={'100%'}>
@@ -101,24 +107,24 @@ export default function DashboardLayout({ children }: { children?: ReactNode }) 
             </Button>
           </Link>
 
-          <Flex alignItems={'center'}>
-            <Avatar src={'/images/localization-eng.png'} size={isMdScreen ? 'xs' : 'sm'} />
+          {/* <Flex alignItems={'center'}>
+            <Avatar src={'' + user?.photoURL} size={isMdScreen ? 'xs' : 'sm'} />
             <Button size={'xs'} p={0} m={0} variant={'unstyled'} color={'gray.500'}>
               <ChevronDownIcon fontWeight={'bold'} fontSize={'lg'} />
             </Button>
-          </Flex>
+          </Flex> */}
           <HStack spacing={3}>
             <Flex h={'15px'} w={'1px'} bg={'gray.500'}></Flex>
 
             <Flex alignItems={'center'} gap={1}>
-              <Avatar src={'https://avatar.iran.liara.run/public'} size={isMdScreen ? 'xs' : 'sm'} />
+              <Avatar src={user?.photoURL || ''} size={isMdScreen ? 'xs' : 'sm'} />
               {!isMdScreen && (
                 <Stack spacing={'-6px'}>
                   <Text fontWeight={'normal'} fontSize={'md'}>
-                    Bursa De Ambulante
+                    {user?.displayName}
                   </Text>
                   <Text color={'gray.500'} fontSize={'xs'}>
-                    Admin
+                    Doctor
                   </Text>
                 </Stack>
               )}
@@ -152,8 +158,13 @@ const Sidebar = ({ onRouteChange }: { onRouteChange?: () => void }) => {
 
   return (
     <>
-      <Box p={'max(2rem,12%)'} w={'100%'} justifyContent={'center'}>
-        <Image src="/images/bap-logo-red.png" alt="bap-logo" maxW={'197px'} maxH={'68px'} />
+      <Box p={'max(2rem,12%)'} pb={1} w={'100%'} justifyContent={'center'}>
+        <HStack>
+          <Logo width={50} height={50} />
+          <Heading fontSize={'2xl'} color={'blue.600'}>
+            Dokto
+          </Heading>
+        </HStack>
       </Box>
 
       <Flex w={'100%'} flexDir={'column'} px={'max(1.2rem, 8%)'} gap={2}>
@@ -223,7 +234,7 @@ const SideBarLink = ({ icon, path, link, active, onRouteChange, ...rest }: SideB
           colorScheme="red"
           justifyContent={'flex-start'}
           fontWeight={'normal'}
-          bg={active || hasActiveChild ? 'var(--red-grad)' : 'transparent'}
+          bg={active || hasActiveChild ? 'var(--blue-grad)' : 'transparent'}
           color={active || hasActiveChild ? 'white' : '#8A92A6'}
           _active={{
             bg: '',

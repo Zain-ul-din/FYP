@@ -1,7 +1,7 @@
 :root {
   /* gradients */
 
-  --red-grad: linear-gradient(rgb(59, 130, 246), rgb(37, 99, 235));
+  --blue-grad: linear-gradient(rgb(59, 130, 246), rgb(37, 99, 235));
 
   --brand-bg: rgba(50, 166, 249, 1);
 

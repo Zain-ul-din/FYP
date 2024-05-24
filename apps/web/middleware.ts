@@ -3,7 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith('/_next') || pathname.startsWith('/api')) return NextResponse.next();
+  if (
+    pathname.startsWith('/_next') || pathname.startsWith('/api')
+    || pathname.startsWith('/images')
+  ) return NextResponse.next();
 
   const session = request.cookies.get('session');
 
