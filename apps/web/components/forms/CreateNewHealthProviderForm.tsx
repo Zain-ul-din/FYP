@@ -222,7 +222,7 @@ export default function CreateNewHealthProviderForm({
       wait_time: parseInt(formState.wait_time.value),
       start_time: formState.start_time.value,
       end_time: formState.end_time.value,
-      about: hospital.name || 'This hospital is a great place to get treated.',
+      about: hospital.about || 'This hospital is a great place to get treated.',
       created_at: serverTimestamp(),
       updated_at: serverTimestamp(),
       doctor_id: user.uid,

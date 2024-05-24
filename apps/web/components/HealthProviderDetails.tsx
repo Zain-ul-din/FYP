@@ -3,7 +3,23 @@
 import { firestore } from '@/lib/firebase';
 import { healthProvidersCol } from '@/lib/firebase/collections';
 import HealthProviderDoc from '@/lib/firebase/types/HealthProviderDoc';
-import { Button, Divider, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Avatar,
+  Box,
+  Button,
+  Divider,
+  Flex,
+  HStack,
+  Heading,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 
 import { collection, doc, updateDoc } from 'firebase/firestore';
 import { useDocument } from 'react-firebase-hooks/firestore';
@@ -11,6 +27,8 @@ import AppointmentTimetable from './AppointmentTimetable';
 import { Fragment, useCallback, useState } from 'react';
 import createModal from './design/createModal';
 import CreateNewHealthProviderForm from './forms/CreateNewHealthProviderForm';
+import MapIcon from './icons/MapIcon';
+import { DeleteIcon, EditIcon, TimeIcon } from '@chakra-ui/icons';
 
 interface HealthProviderDetailsProps {
   uid: string;
@@ -56,37 +74,71 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
     <CreateHealthProviderModal.Provider>
       <Flex p={4}>
         <Stack w={'full'} spacing={6}>
-          <Heading>{data.name}</Heading>
-          <Flex>
+          <HStack spacing={4}>
+            <Avatar src={data.avatar} size={'lg'} />
+            <Stack spacing={0}>
+              <Heading fontSize={'2xl'}>{data.name}</Heading>
+              <Text color={'gray.600'} fontSize={'sm'}>
+                {data.location}
+              </Text>
+            </Stack>
+          </HStack>
+          <Flex flexWrap={'wrap'} gap={2}>
             <EditBtn doc={data} />
-            <Button variant={'red'} size={'sm'} ml={2} onClick={updateDocument}>
+            <Button
+              colorScheme="whatsapp"
+              size={'sm'}
+              leftIcon={<MapIcon color="white" />}
+              as={'a'}
+              href={data.googleLocLink}
+              target="_blank"
+            >
+              View Locations
+            </Button>
+            <Button variant={'red'} size={'sm'} onClick={updateDocument}>
               {isChangesAvailable ? 'Save Changes' : 'Saved'}
+            </Button>
+            <Button colorScheme="red" size={'sm'} leftIcon={<DeleteIcon />}>
+              Delete
             </Button>
           </Flex>
           <Divider />
           <Flex flexDir={'column'} gap={4}>
-            <Heading>Timetable</Heading>
-            {days.map((day, i) => (
-              <Fragment key={i}>
-                <Text>
-                  {'> '}
-                  {day.toUpperCase()}
-                </Text>
-                <AppointmentTimetable
-                  initialSlots={data[day as keyof HealthProviderDoc] as any}
-                  start_time={data.start_time}
-                  end_time={data.end_time}
-                  waitTime={data.wait_time}
-                  day={day}
-                  onChange={(timeSlots) => {
-                    setIsChangesAvailable(true);
-                    setSlots((prev) => {
-                      return { ...prev, [day]: timeSlots };
-                    });
-                  }}
-                />
-              </Fragment>
-            ))}
+            <Heading size={'md'} verticalAlign={'center'}>
+              Timetable
+            </Heading>
+            <Accordion allowMultiple>
+              {days.map((day, i) => (
+                <AccordionItem key={i}>
+                  <h2>
+                    <AccordionButton _expanded={{ bg: 'var(--blue-grad)', color: 'white' }}>
+                      <Box as="span" flex="1" textAlign="left">
+                        <HStack>
+                          <TimeIcon />
+                          <Text>{day.toLocaleUpperCase()}</Text>
+                        </HStack>
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4} bg={'white'}>
+                    <AppointmentTimetable
+                      initialSlots={data[day as keyof HealthProviderDoc] as any}
+                      start_time={data.start_time}
+                      end_time={data.end_time}
+                      waitTime={data.wait_time}
+                      day={day}
+                      onChange={(timeSlots) => {
+                        setIsChangesAvailable(true);
+                        setSlots((prev) => {
+                          return { ...prev, [day]: timeSlots };
+                        });
+                      }}
+                    />
+                  </AccordionPanel>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </Flex>
         </Stack>
       </Flex>
@@ -99,7 +151,7 @@ const EditBtn = ({ doc }: { doc: HealthProviderDoc }) => {
 
   return (
     <>
-      <Button variant={'red'} size={'sm'} onClick={onOpen}>
+      <Button variant={'red'} size={'sm'} onClick={onOpen} leftIcon={<EditIcon />}>
         Edit
       </Button>
       <CreateHealthProviderModal.Layout title="Edit Health Provider">

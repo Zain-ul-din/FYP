@@ -52,19 +52,21 @@ const HealthProviderCard = ({ healthProvider, ...rest }: HealthProviderListProps
   return (
     <Link href={`/dashboard/hospitals/${healthProvider.uid}`}>
       <Flex
-        bg={'white'}
+        bg={'#ffff'}
         rounded={'md'}
         shadow={'sm'}
         p={4}
         cursor={'pointer'}
+        border={'1px solid'}
+        borderColor={'gray.300'}
         _hover={{
           bg: 'gay.300',
-          shadow: 'md',
+          shadow: 'sm',
         }}
         {...rest}
       >
         <HStack spacing={4}>
-          <Avatar />
+          <Avatar src={healthProvider.avatar} size={'lg'} />
           <Stack spacing={0}>
             <Heading size={'md'}>{healthProvider.name}</Heading>
             <Text>{healthProvider.about}</Text>
