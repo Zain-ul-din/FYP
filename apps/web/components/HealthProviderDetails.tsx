@@ -60,8 +60,15 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
     if (!isChangesAvailable) return;
     // Update the document
     const docRef = doc(collection(firestore, healthProvidersCol), data.uid);
+    const slotsToFlatArr = Object.entries(slots)
+      .map(([key, slots]) => {
+        return [key, slots.map((s) => s.time)];
+      })
+      .reduce((acc, curr) => {
+        return { ...acc, [curr[0] as string]: curr[1] };
+      }, {});
     updateDoc(docRef, {
-      ...slots,
+      ...slotsToFlatArr,
     }).finally(() => {
       setIsChangesAvailable(false);
     });

@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { ReactNode, useEffect, useState } from 'react';
 import OrganizationIcon from '../icons/OrganizationIcon';
-import { ROUTES, SUB_ROUTES } from '@/lib/constants/dashboard_routes';
+import { ROUTES, SLUG_ROUTES, SUB_ROUTES } from '@/lib/constants/dashboard_routes';
 import { IconProps } from '../../types/IconProps';
 
 import AmbulanceIcon from '../icons/AmbulanceIcon';
@@ -169,11 +169,18 @@ const Sidebar = ({ onRouteChange }: { onRouteChange?: () => void }) => {
 
       <Flex w={'100%'} flexDir={'column'} px={'max(1.2rem, 8%)'} gap={2}>
         {dashboardLinks.map(({ Icon, text }, i) => {
+          SLUG_ROUTES.some((v) => {
+            console.log(pathname, ' starts with ', v);
+          });
+
           return (
             <SideBarLink
               key={i}
               icon={(props) => <Icon style={{ marginRight: '0.6rem' }} {...props} />}
-              active={pathname === ROUTES[text]}
+              active={
+                pathname === ROUTES[text] ||
+                (SLUG_ROUTES.some((v) => v === ROUTES[text]) && pathname.startsWith(ROUTES[text]))
+              }
               link={ROUTES[text]}
               path={text}
               onRouteChange={onRouteChange}

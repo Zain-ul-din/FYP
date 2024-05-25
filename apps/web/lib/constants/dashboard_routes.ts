@@ -44,3 +44,6 @@ export const SUB_ROUTES: Partial<Record<keyof typeof ROUTES, { name: string; lin
 };
 
 
+export const SLUG_ROUTES = [
+  ROUTES.Hospitals
+]

@@ -19,7 +19,6 @@ const TimeInput: React.FC<TimeInputProps> = ({ label, value, onChange }) => {
       const formattedMinute: string = String(minute).padStart(2, '0');
       const formattedTime: string = `${formattedHour}:${formattedMinute}`;
       timeOptions.push(formattedTime);
-      console.log(timeOptions);
     }
   }
 

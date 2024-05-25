@@ -156,6 +156,7 @@ export default function CreateNewHealthProviderForm({
     dispatch({ type: 'wait_time', payload: initialState.wait_time.toString() });
     dispatch({ type: 'start_time', payload: initialState.start_time });
     dispatch({ type: 'end_time', payload: initialState.end_time });
+    dispatch({ type: 'fee', payload: initialState.fee + '' });
   }, [initialState]);
 
   const isValid = useCallback(() => {
@@ -308,6 +309,7 @@ export default function CreateNewHealthProviderForm({
           variant={'filled'}
           type="number"
           onChange={(e) => dispatch({ type: 'fee', payload: e.target.value })}
+          value={formState.fee.value}
         />
         <FormErrorMessage>{formState.fee.error}</FormErrorMessage>
       </FormControl>
@@ -316,6 +318,7 @@ export default function CreateNewHealthProviderForm({
         <Input
           placeholder="Enter Wait Time"
           defaultValue={15}
+          value={formState.wait_time.value}
           variant={'filled'}
           type="number"
           onChange={(e) => dispatch({ type: 'wait_time', payload: e.target.value })}
