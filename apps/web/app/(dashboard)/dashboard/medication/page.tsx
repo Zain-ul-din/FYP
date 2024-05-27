@@ -1,21 +1,55 @@
 'use client';
-import { DaysTimeLine, SingleDaySchedule } from '@/components/medication';
+import createModal from '@/components/design/createModal';
+import NewMedicationPlanForm from '@/components/forms/NewMedicationPlanForm';
+import OrganizationIcon from '@/components/icons/OrganizationIcon';
+import { SingleDaySchedule } from '@/components/medication';
 import DashboardHeader from '@/components/shared/DashboardHeader';
-import { Flex, Text } from '@chakra-ui/react';
+import RoutesBreadcrumb from '@/components/shared/RoutesBreadcrumb';
+import { Button, Flex } from '@chakra-ui/react';
+
+const NewMedicationPlanProviderModal = createModal();
 
 export default function Page() {
   return (
-    <>
+    <NewMedicationPlanProviderModal.Provider>
       <DashboardHeader description="Manage medication reminders For your patients">
         Medication Reminders
       </DashboardHeader>
+      <RoutesBreadcrumb
+        path="Medication"
+        icon={(props) => (
+          <OrganizationIcon
+            color="#0070f3"
+            style={{
+              transform: 'translateY(-2px)',
+            }}
+            {...props}
+          />
+        )}
+      >
+        <AddNewMedicationPanButton />
+      </RoutesBreadcrumb>
       <Flex w={'100%'} h={'100%'} p={3} flexDir={'column'} gap={'0.5rem'} pb={5}>
         <SingleDaySchedule />
         {/* <DaysTimeLine days={30} /> */}
       </Flex>
-    </>
+    </NewMedicationPlanProviderModal.Provider>
   );
 }
+
+const AddNewMedicationPanButton = () => {
+  const { onClose, onOpen } = NewMedicationPlanProviderModal.useModalState();
+  return (
+    <>
+      <Button colorScheme="blue" fontWeight={'normal'} size={'sm'} ml={'auto'} onClick={onOpen}>
+        + Add New
+      </Button>
+      <NewMedicationPlanProviderModal.Layout title="Add New Health Provider">
+        <NewMedicationPlanForm onClose={onClose} />
+      </NewMedicationPlanProviderModal.Layout>
+    </>
+  );
+};
 
 // export default function Page() {
 //   const [prompt, setPrompt] = useState<string>('');
