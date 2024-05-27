@@ -37,6 +37,7 @@ import { usePathname } from 'next/navigation';
 import Logo from '../icons/Logo';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { firebaseAuth } from '@/lib/firebase';
+import MedicineIcon from '../icons/MedicineIcon';
 
 export default function DashboardLayout({ children }: { children?: ReactNode }) {
   const [isMdScreen] = useMediaQuery('(max-width: 850px)');
@@ -147,7 +148,7 @@ const dashboardLinks: {
   { text: 'Dashboard', Icon: CategoryIcon },
   { text: 'Hospitals', Icon: OrganizationIcon },
   { text: 'Patients', Icon: FluentPersonIcon },
-  { text: 'Booking', Icon: SteeringIcon },
+  { text: 'Medication', Icon: MedicineIcon },
   { text: 'Settings', Icon: SettingIcons },
   { text: 'Emergency contact', Icon: FluentSupportIcon },
   { text: 'Manage Admins', Icon: ManageIcons },
@@ -169,9 +170,9 @@ const Sidebar = ({ onRouteChange }: { onRouteChange?: () => void }) => {
 
       <Flex w={'100%'} flexDir={'column'} px={'max(1.2rem, 8%)'} gap={2}>
         {dashboardLinks.map(({ Icon, text }, i) => {
-          SLUG_ROUTES.some((v) => {
-            console.log(pathname, ' starts with ', v);
-          });
+          // SLUG_ROUTES.some((v) => {
+          //   console.log(pathname, ' starts with ', v);
+          // });
 
           return (
             <SideBarLink

@@ -21,14 +21,15 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import { collection, doc, updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { useDocument } from 'react-firebase-hooks/firestore';
 import AppointmentTimetable from './AppointmentTimetable';
-import { Fragment, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import createModal from './design/createModal';
 import CreateNewHealthProviderForm from './forms/CreateNewHealthProviderForm';
 import MapIcon from './icons/MapIcon';
 import { DeleteIcon, EditIcon, TimeIcon } from '@chakra-ui/icons';
+import { useRouter } from 'next/navigation';
 
 interface HealthProviderDetailsProps {
   uid: string;
@@ -41,6 +42,9 @@ const CreateHealthProviderModal = createModal();
 export default function HealthProviderDetails({ uid }: HealthProviderDetailsProps) {
   const [snapShot, loading, err] = useDocument(doc(firestore, healthProvidersCol, uid));
   const [isChangesAvailable, setIsChangesAvailable] = useState(false);
+  const router = useRouter();
+  const [isLoading, setLoading] = useState<boolean>(false);
+
   const [slots, setSlots] = useState(
     days
       .map((day) => {
@@ -54,6 +58,14 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
         {} as Record<string, { time: string }[]>
       )
   );
+
+  const deleteProvider = useCallback(() => {
+    setLoading(true);
+    deleteDoc(doc(collection(firestore, healthProvidersCol), uid)).then(() => {
+      setLoading(false);
+      router.push('/dashboard/hospitals');
+    });
+  }, []);
 
   const data = snapShot?.data() as HealthProviderDoc;
   const updateDocument = useCallback(() => {
@@ -76,6 +88,8 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
 
   if (loading || !snapShot) return <Spinner />;
   if (err) return <Text color={'red.300'}>Error: {err.message}</Text>;
+
+  if (!data) return <Spinner />;
 
   return (
     <CreateHealthProviderModal.Provider>
@@ -105,7 +119,13 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
             <Button variant={'red'} size={'sm'} onClick={updateDocument}>
               {isChangesAvailable ? 'Save Changes' : 'Saved'}
             </Button>
-            <Button colorScheme="red" size={'sm'} leftIcon={<DeleteIcon />}>
+            <Button
+              colorScheme="red"
+              size={'sm'}
+              leftIcon={<DeleteIcon />}
+              onClick={deleteProvider}
+              isLoading={isLoading}
+            >
               Delete
             </Button>
           </Flex>
@@ -130,7 +150,11 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
                   </h2>
                   <AccordionPanel pb={4} bg={'white'}>
                     <AppointmentTimetable
-                      initialSlots={data[day as keyof HealthProviderDoc] as any}
+                      initialSlots={
+                        (data[day as keyof HealthProviderDoc] as any).map((slot: any) => ({
+                          time: slot,
+                        })) as any
+                      }
                       start_time={data.start_time}
                       end_time={data.end_time}
                       waitTime={data.wait_time}

@@ -1,8 +1,10 @@
 'use client';
 import createModal from '@/components/design/createModal';
 import NewMedicationPlanForm from '@/components/forms/NewMedicationPlanForm';
+import MedicineIcon from '@/components/icons/MedicineIcon';
 import OrganizationIcon from '@/components/icons/OrganizationIcon';
 import { SingleDaySchedule } from '@/components/medication';
+import Medications from '@/components/medication/Medications';
 import DashboardHeader from '@/components/shared/DashboardHeader';
 import RoutesBreadcrumb from '@/components/shared/RoutesBreadcrumb';
 import { Button, Flex } from '@chakra-ui/react';
@@ -18,8 +20,9 @@ export default function Page() {
       <RoutesBreadcrumb
         path="Medication"
         icon={(props) => (
-          <OrganizationIcon
-            color="#0070f3"
+          <MedicineIcon
+            fill="#0070f3"
+            fontSize={'1.2rem'}
             style={{
               transform: 'translateY(-2px)',
             }}
@@ -30,7 +33,8 @@ export default function Page() {
         <AddNewMedicationPanButton />
       </RoutesBreadcrumb>
       <Flex w={'100%'} h={'100%'} p={3} flexDir={'column'} gap={'0.5rem'} pb={5}>
-        <SingleDaySchedule />
+        <Medications />
+        {/* <SingleDaySchedule /> */}
         {/* <DaysTimeLine days={30} /> */}
       </Flex>
     </NewMedicationPlanProviderModal.Provider>

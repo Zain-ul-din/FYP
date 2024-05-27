@@ -2,7 +2,7 @@ export const ROUTES = {
   Dashboard: '/dashboard',
   Hospitals: '/dashboard/hospitals',
   Patients: '/dashboard/patients',
-  Booking: '/booking',
+  Medication: '/dashboard/medication',
   Settings: '/settings',
   'Emergency contact': '/dashboard/emergency-contact',
   'Sign in': '/signin',
@@ -22,8 +22,8 @@ export const ROUTES = {
 
 ROUTES['User_Served'] = `${ROUTES['Patients']}/served`
 
-ROUTES['Booking_Chat'] = `${ROUTES['Booking']}/chat`
-ROUTES['Booking_Tracking'] = `${ROUTES['Booking']}/map-tracking`
+ROUTES['Booking_Chat'] = `${ROUTES['Medication']}/chat`
+ROUTES['Booking_Tracking'] = `${ROUTES['Medication']}/map-tracking`
 
 ROUTES['Settings_Payment'] = `${ROUTES['Settings']}/payments`
 ROUTES['Settings_API'] = `${ROUTES['Settings']}/api`
