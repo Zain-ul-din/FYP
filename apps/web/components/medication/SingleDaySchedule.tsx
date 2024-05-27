@@ -13,11 +13,16 @@ import {
   NumberIncrementStepper,
   NumberInputStepper,
   NumberDecrementStepper,
+  ListItem,
+  List,
+  Box,
 } from '@chakra-ui/react';
 import TimeInput from '../design/TimeInput';
 import createModal from '../design/createModal';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import timeToStr from '@/lib/util/timeToStr';
+import { Select } from 'chakra-react-select';
+import debounce from '@/lib/util/debounce';
 
 const AddNewTimetableModal = createModal();
 
@@ -31,7 +36,7 @@ export default function SingleDaySchedule() {
 
   return (
     <AddNewTimetableModal.Provider>
-      <Flex overflowX={'scroll'} gap={4} maxH={'80vh'}>
+      <Flex overflowX={'scroll'} height={'100%'} gap={4} maxH={'80vh'}>
         {Object.keys(schedule).map((title, idx) => (
           <ScheduleCard
             key={idx}
@@ -97,6 +102,26 @@ const ScheduleCard = ({
   onDelete,
 }: ScheduleCardProps) => {
   const [med, setMed] = useState<string>('');
+  const [medicineList, setMedicineList] = useState<string[]>([]);
+
+  const fetchMedicines = useCallback(
+    debounce((query: string) => {
+      fetch(`/api/medicines?q=${query}`)
+        .then((res) => res.json())
+        .then(({ medicines }) => {
+          setMedicineList((medicines as { name: string }[]).map(({ name }) => name));
+        });
+    }, 500),
+    []
+  );
+
+  useEffect(() => {
+    if (med.trim() !== '') {
+      fetchMedicines(med);
+    } else {
+      setMedicineList([]);
+    }
+  }, [med, fetchMedicines]);
 
   return (
     <Card
@@ -112,6 +137,7 @@ const ScheduleCard = ({
       borderColor={'gray.500'}
       alignItems={'center'}
       flexDir={'column'}
+      position="relative"
     >
       <Flex w={'100%'}>
         <Text>Timing - {title}</Text>
@@ -122,20 +148,18 @@ const ScheduleCard = ({
       <Divider my={3} />
 
       <Flex flexDir={'column'} w={'100%'} overflowY={'auto'} gap={1} my={2}>
-        {medicines.map((medicine, idx) => {
-          return (
-            <MedicineCard
-              medicine={medicine}
-              key={idx}
-              onQtChange={(newQt) => {
-                onMedicationQtChange(medicine.name, newQt);
-              }}
-              onDelete={() => onDeleteMedicine(medicine.name)}
-            />
-          );
-        })}
+        {medicines.map((medicine, idx) => (
+          <MedicineCard
+            medicine={medicine}
+            key={idx}
+            onQtChange={(newQt: number) => {
+              onMedicationQtChange(medicine.name, newQt);
+            }}
+            onDelete={() => onDeleteMedicine(medicine.name)}
+          />
+        ))}
       </Flex>
-      <HStack mt={'auto'}>
+      <HStack mt={'auto'} position="relative" w="100%">
         <Input placeholder="add" variant={'solid'} onChange={(e) => setMed(e.target.value)} value={med} />
         <Button
           size={'sm'}
@@ -148,6 +172,41 @@ const ScheduleCard = ({
         >
           <AddIcon />
         </Button>
+        {medicineList.length > 0 && (
+          <Box
+            position="absolute"
+            bottom="100%"
+            left={-2}
+            right={0}
+            bg="white"
+            border="1px solid"
+            borderColor="gray.300"
+            mt={1}
+            zIndex={10}
+            boxShadow="md"
+            borderRadius="md"
+            maxHeight="200px"
+            overflowY="auto"
+            width="100%"
+          >
+            <List>
+              {medicineList.map((medicine, idx) => (
+                <ListItem
+                  key={idx}
+                  p={2}
+                  _hover={{ bg: 'gray.100', cursor: 'pointer' }}
+                  onClick={() => {
+                    onAddMedication(medicine);
+                    setMed('');
+                    setMedicineList([]);
+                  }}
+                >
+                  {medicine}
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        )}
       </HStack>
     </Card>
   );
