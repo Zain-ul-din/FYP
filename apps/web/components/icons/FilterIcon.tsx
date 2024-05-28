@@ -15,8 +15,8 @@ export default function FilterIcon({ active, ...rest }: IconProps) {
       </g>
       <defs>
         <linearGradient id="paint0_linear_3653_4089" x1="12" y1="6" x2="12" y2="18" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#E71B40" />
-          <stop offset="1" stop-color="#A5001F" />
+          <stop stop-color="black" />
+          <stop offset="1" stop-color="black" />
         </linearGradient>
       </defs>
     </svg>
