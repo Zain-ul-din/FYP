@@ -23,6 +23,10 @@ import { useCallback, useEffect, useState } from 'react';
 import timeToStr from '@/lib/util/timeToStr';
 import { Select } from 'chakra-react-select';
 import debounce from '@/lib/util/debounce';
+import { collection, doc, updateDoc, deleteField } from 'firebase/firestore';
+import { firestore } from '@/lib/firebase';
+import { medicationsCol } from '@/lib/firebase/collections';
+import SaveBtn from '../forms/shared/SaveBtn';
 
 const AddNewTimetableModal = createModal();
 
@@ -31,11 +35,44 @@ type MedicineMeta = {
   qt: number;
 };
 
-export default function SingleDaySchedule() {
-  const [schedule, setSchedule] = useState<{ [key: string]: MedicineMeta[] }>({});
+interface SingleDayScheduleProps {
+  initialState: {
+    [key: string]: MedicineMeta[];
+  };
+  doc_id: string;
+  variant_id: string;
+  onDelete: () => void;
+}
+
+export default function SingleDaySchedule({ initialState, doc_id, variant_id, onDelete }: SingleDayScheduleProps) {
+  const [schedule, setSchedule] = useState<{ [key: string]: MedicineMeta[] }>(initialState);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const saveSchedule = useCallback(async () => {
+    setLoading(true);
+    await updateDoc(doc(collection(firestore, medicationsCol), doc_id), {
+      [`variants.${variant_id}`]: schedule,
+    });
+    setLoading(false);
+  }, [schedule, doc_id, variant_id]);
+
+  const deleteSchedule = useCallback(async () => {
+    setLoading(true);
+    await updateDoc(doc(collection(firestore, medicationsCol), doc_id), {
+      [`variants.${variant_id}`]: deleteField(),
+    });
+    setLoading(false);
+    onDelete();
+  }, [schedule, doc_id, variant_id]);
 
   return (
     <AddNewTimetableModal.Provider>
+      <HStack>
+        <SaveBtn size={'sm'} onClick={saveSchedule} isLoading={loading} />
+        <Button colorScheme="red" leftIcon={<DeleteIcon />} size={'sm'} onClick={deleteSchedule} isLoading={loading}>
+          Delete
+        </Button>
+      </HStack>
       <Flex overflowX={'scroll'} height={'100%'} gap={4} maxH={'80vh'}>
         {Object.keys(schedule).map((title, idx) => (
           <ScheduleCard

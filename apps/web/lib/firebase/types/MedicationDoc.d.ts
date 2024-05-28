@@ -13,7 +13,7 @@ export default interface MedicationDoc {
   variants: {
     [key: string]: {
       [time: string]: Array<{ 
-        med_name: string; quantity: number;
+        name: string; qt: number;
       }>
     }
   }

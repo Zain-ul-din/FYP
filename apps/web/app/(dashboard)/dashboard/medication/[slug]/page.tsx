@@ -1,5 +1,6 @@
 'use client';
 import MedicineIcon from '@/components/icons/MedicineIcon';
+import { SingleDaySchedule } from '@/components/medication';
 import MedicationDetails from '@/components/medication/MedicationDetails';
 import DashboardHeader from '@/components/shared/DashboardHeader';
 import FilterBtn from '@/components/shared/FilterBtn';
@@ -20,6 +21,8 @@ export default function Page({ params: { slug } }: { params: { slug: string } })
   const [snapShot, loading] = useCollection(
     query(collection(firestore, medicationsCol), where('uid', '==', decodedSlug))
   );
+
+  const [selectedVariant, setSelectedVariant] = useState<string>('');
 
   if (!snapShot) return <Spinner />;
 
@@ -51,13 +54,14 @@ export default function Page({ params: { slug } }: { params: { slug: string } })
             });
           }}
           onFilterChange={(opt) => {
+            setSelectedVariant(opt);
             setActiveState('variants');
           }}
         >
           {Object.keys(medication.variants)}
         </FilterBtn>
       </RoutesBreadcrumb>
-      <Flex w={'full'} flexDir={'column'} py={0} px={3} gap={3}>
+      <Flex w={'full'} h={'full'} flexDir={'column'} py={0} px={3} gap={3}>
         <Flex py={2} gap={2}>
           <LabelButton
             count={medication.duration}
@@ -77,7 +81,7 @@ export default function Page({ params: { slug } }: { params: { slug: string } })
                 case 'days':
                   return `Days Schedule (${medication.duration})`;
                 case 'variants':
-                  return `variants (${Object.keys(medication.variants).length})`;
+                  return `${selectedVariant.toUpperCase()} - (${Object.keys(medication.variants).length})`;
               }
               return '';
             })()}
@@ -89,9 +93,18 @@ export default function Page({ params: { slug } }: { params: { slug: string } })
               case 'days':
                 return <MedicationDetails medication={medication} />;
               case 'variants':
-                return 'nathg here!!';
+                return (
+                  <SingleDaySchedule
+                    onDelete={() => {
+                      setActiveState('days');
+                    }}
+                    initialState={medication.variants[selectedVariant] || {}}
+                    doc_id={decodedSlug}
+                    variant_id={selectedVariant}
+                  />
+                );
               default:
-                return '😫';
+                return '🙀';
             }
           })()}
         </>
