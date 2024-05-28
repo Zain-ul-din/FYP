@@ -15,7 +15,7 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import PaginationTable from '../shared/PaginationTable';
-import { FieldValue, collection, doc, orderBy, query, updateDoc, where } from 'firebase/firestore';
+import { FieldValue, collection, doc, orderBy, query, serverTimestamp, updateDoc, where } from 'firebase/firestore';
 import useLoggedInUser from '@/lib/hooks/useLoggedInUser';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { firestore } from '@/lib/firebase';
@@ -28,6 +28,7 @@ type AppointmentStatus = 'pending' | 'rejected' | 'approved';
 interface AppointmentDoc {
   appointment_date: string;
   created_at: FieldValue;
+  updated_at: FieldValue;
   doctor_avatar: string;
   doctor_display_name: string;
   doctor_id: string;
@@ -52,6 +53,7 @@ export default function Appointments() {
   const updateStatus = useCallback((doc_id: string, status: AppointmentStatus) => {
     updateDoc(doc(collection(firestore, appointmentsCol), doc_id), {
       status,
+      updated_at: serverTimestamp(),
     } as Pick<AppointmentDoc, 'status'>);
   }, []);
 
