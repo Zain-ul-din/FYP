@@ -1,3 +1,6 @@
+import MedicationDetails from '@/components/medication/MedicationDetails';
+
 export default function Page({ params: { slug } }: { params: { slug: string } }) {
-  return <>{decodeURI(slug)}</>;
+  const decodedSlug = decodeURI(slug);
+  return <MedicationDetails uid={decodedSlug} />;
 }
