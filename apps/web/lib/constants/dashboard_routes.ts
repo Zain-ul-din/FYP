@@ -1,7 +1,7 @@
 export const ROUTES = {
   Dashboard: '/dashboard',
   Hospitals: '/dashboard/hospitals',
-  Patients: '/dashboard/patients',
+  Appointments: '/dashboard/appointments',
   Medication: '/dashboard/medication',
   Settings: '/settings',
   'Emergency contact': '/dashboard/emergency-contact',
@@ -20,7 +20,7 @@ export const ROUTES = {
 };
 
 
-ROUTES['User_Served'] = `${ROUTES['Patients']}/served`
+ROUTES['User_Served'] = `${ROUTES['Appointments']}/served`
 
 ROUTES['Booking_Chat'] = `${ROUTES['Medication']}/chat`
 ROUTES['Booking_Tracking'] = `${ROUTES['Medication']}/map-tracking`
@@ -31,8 +31,8 @@ ROUTES['settings_Policy'] = `${ROUTES['Settings']}/policy`
 
 
 export const SUB_ROUTES: Partial<Record<keyof typeof ROUTES, { name: string; link: string }[]>> = {
-  Patients: [
-    { name: 'Pending', link: ROUTES['Patients'] },
+  Appointments: [
+    { name: 'Pending', link: ROUTES['Appointments'] },
     { name: 'Served', link: ROUTES['User_Served'] },
   ],
   Settings: [

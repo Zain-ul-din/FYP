@@ -147,7 +147,7 @@ const dashboardLinks: {
 }[] = [
   { text: 'Dashboard', Icon: CategoryIcon },
   { text: 'Hospitals', Icon: OrganizationIcon },
-  { text: 'Patients', Icon: FluentPersonIcon },
+  { text: 'Appointments', Icon: FluentPersonIcon },
   { text: 'Medication', Icon: MedicineIcon },
   { text: 'Settings', Icon: SettingIcons },
   { text: 'Emergency contact', Icon: FluentSupportIcon },
