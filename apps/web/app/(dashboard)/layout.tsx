@@ -5,6 +5,7 @@ import DashboardLayout from '@/components/layouts/DashboardLayout';
 import { ChakraClientProvider } from '@/providers/ChakraClientProvider';
 import { headers } from 'next/headers';
 import AuthProvider from '@/components/shared/AuthProvider';
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata: Metadata = {
   title: 'Create Turborepo',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
   return (
     <html lang="en">
       <body className={LufgaFont.className}>
+        <NextTopLoader />
         <ChakraClientProvider>
           <AuthProvider uid={userId || ''}>
             {/* <LoggedInUserProvider value={JSON.stringify(userId)}> */}
