@@ -15,6 +15,7 @@ import TimeInput from '../design/TimeInput';
 import InputState from '@/types/InputState';
 import HealthProviderDoc from '@/lib/firebase/types/HealthProviderDoc';
 import {
+  arrayUnion,
   collection,
   doc,
   getCountFromServer,
@@ -27,9 +28,11 @@ import {
 import { firebaseAuth, firestore } from '@/lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import invariant from 'invariant';
-import { healthProvidersCol } from '@/lib/firebase/collections';
+import { doctorsCol, healthProvidersCol } from '@/lib/firebase/collections';
 import timeToStr from '@/lib/util/timeToStr';
 import HospitalResType from '@/types/HospitalResType';
+import useLoggedInUser from '@/lib/hooks/useLoggedInUser';
+import DoctorDoc from '@/lib/firebase/types/DoctorDoc';
 
 interface FormState
   extends Record<
@@ -131,7 +134,7 @@ export default function CreateNewHealthProviderForm({
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
   const [user] = useAuthState(firebaseAuth);
   const [loading, setLoading] = useState(false);
-
+  const loggedInUser = useLoggedInUser();
   const [loadingHospitals, setLoadingHospitals] = useState<boolean>(false);
   const [hospitals, setHospitals] = useState<HospitalResType[]>([]);
 
@@ -256,7 +259,14 @@ export default function CreateNewHealthProviderForm({
           )
         )
       ).data().count;
-      if (count == 0) await setDoc(docRef, docData);
+      if (count == 0) {
+        await Promise.all([
+          setDoc(docRef, docData),
+          updateDoc(doc(collection(firestore, doctorsCol), loggedInUser), {
+            locations: arrayUnion(docData.city),
+          }),
+        ]);
+      }
       setLoading(false);
       dispatch({ type: '', payload: '' } as any);
     }

@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Avatar,
   Button,
   Checkbox,
   Menu,
@@ -35,9 +36,12 @@ interface AppointmentDoc {
   health_provider_id: string;
   health_provider_location: string;
   health_provider_name: string;
+  health_provider_avatar: string;
+  patient_phone_no: string;
   patient_id: string;
   patient_name: string;
   slot: string;
+  patient_age: number;
   status: AppointmentStatus;
   week_day: string;
   uid?: string;
@@ -71,6 +75,8 @@ export default function Appointments() {
           <Th>Hospital Avatar</Th>
           <Th>Hospital</Th>
           <Th>Patient Name</Th>
+          <Th>Age</Th>
+          <Th>Contact Number</Th>
           <Th>Slot</Th>
           <Th>Appointment Date</Th>
           <Th>Status</Th>
@@ -85,9 +91,15 @@ export default function Appointments() {
               <Th>
                 <Checkbox />
               </Th>
-              <Th>{appointment.health_provider_id}</Th>
-              <Th>{appointment.health_provider_name}</Th>
+              <Th>
+                <Avatar src={appointment.health_provider_avatar} size={'md'} />
+              </Th>
+              <Th maxW={'48'} textOverflow={'ellipsis'} overflow={'hidden'}>
+                {appointment.health_provider_name}
+              </Th>
               <Th>{appointment.patient_name}</Th>
+              <Th>{appointment.patient_age}</Th>
+              <Th>{appointment.patient_phone_no}</Th>
               <Th>{appointment.slot}</Th>
               <Th>{timeStampToDate(appointment.appointment_date as any).toDateString()}</Th>
               <Th>
