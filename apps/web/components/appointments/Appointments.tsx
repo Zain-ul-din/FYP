@@ -23,29 +23,7 @@ import { firestore } from '@/lib/firebase';
 import { appointmentsCol } from '@/lib/firebase/collections';
 import { useCallback } from 'react';
 import timeStampToDate from '@/lib/util/timeStampToDate';
-
-type AppointmentStatus = 'pending' | 'rejected' | 'approved';
-
-interface AppointmentDoc {
-  appointment_date: string;
-  created_at: FieldValue;
-  updated_at: FieldValue;
-  doctor_avatar: string;
-  doctor_display_name: string;
-  doctor_id: string;
-  health_provider_id: string;
-  health_provider_location: string;
-  health_provider_name: string;
-  health_provider_avatar: string;
-  patient_phone_no: string;
-  patient_id: string;
-  patient_name: string;
-  slot: string;
-  patient_age: number;
-  status: AppointmentStatus;
-  week_day: string;
-  uid?: string;
-}
+import AppointmentDoc, { AppointmentStatus } from '@/lib/firebase/types/AppointmentDoc';
 
 export default function Appointments() {
   const loggedInUser = useLoggedInUser();
