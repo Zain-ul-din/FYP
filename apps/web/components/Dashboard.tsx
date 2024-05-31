@@ -48,15 +48,20 @@ export default function Dashboard() {
       limit(10)
     );
 
-    onSnapshot(appointmentsQuery, (snapShot) => {
+    const appointmentUnSub = onSnapshot(appointmentsQuery, (snapShot) => {
       const res = snapShot.docs.map((d) => d.data()) as AppointmentDoc[];
       setAppointments(res);
     });
 
-    onSnapshot(healthProviderQuery, (snapShot) => {
+    const healthProviderUnSub = onSnapshot(healthProviderQuery, (snapShot) => {
       const res = snapShot.docs.map((d) => d.data()) as HealthProviderDoc[];
       setHealthProviders(res);
     });
+
+    return () => {
+      appointmentUnSub();
+      healthProviderUnSub();
+    };
   }, [userId]);
 
   return (

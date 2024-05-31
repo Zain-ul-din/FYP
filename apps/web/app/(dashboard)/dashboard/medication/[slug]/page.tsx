@@ -5,6 +5,7 @@ import MedicationDetails from '@/components/medication/MedicationDetails';
 import DashboardHeader from '@/components/shared/DashboardHeader';
 import FilterBtn from '@/components/shared/FilterBtn';
 import LabelButton from '@/components/shared/LabelButton';
+import Loader from '@/components/shared/Loader';
 import RoutesBreadcrumb from '@/components/shared/RoutesBreadcrumb';
 import { firestore } from '@/lib/firebase';
 import { medicationsCol } from '@/lib/firebase/collections';
@@ -24,7 +25,7 @@ export default function Page({ params: { slug } }: { params: { slug: string } })
 
   const [selectedVariant, setSelectedVariant] = useState<string>('');
 
-  if (!snapShot) return <Spinner />;
+  if (!snapShot || loading) return <Loader />;
 
   const medication = snapShot.docs.map((d) => d.data())[0] as MedicationDoc;
 

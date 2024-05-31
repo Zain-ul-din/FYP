@@ -8,6 +8,7 @@ import { collection, query, where } from 'firebase/firestore';
 import Link from 'next/link';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { FcClock } from 'react-icons/fc';
+import Loader from '../shared/Loader';
 
 export default function Medications() {
   const loggedInUser = useLoggedInUser();
@@ -19,7 +20,7 @@ export default function Medications() {
   if (!snapShot)
     return (
       <>
-        <Spinner />
+        <Loader />
       </>
     );
 

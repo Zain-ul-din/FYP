@@ -24,6 +24,7 @@ import { appointmentsCol } from '@/lib/firebase/collections';
 import { useCallback } from 'react';
 import timeStampToDate from '@/lib/util/timeStampToDate';
 import AppointmentDoc, { AppointmentStatus } from '@/lib/firebase/types/AppointmentDoc';
+import Loader from '../shared/Loader';
 
 export default function Appointments() {
   const loggedInUser = useLoggedInUser();
@@ -39,7 +40,7 @@ export default function Appointments() {
     } as Pick<AppointmentDoc, 'status'>);
   }, []);
 
-  if (!snapShot) return <Spinner />;
+  if (!snapShot) return <Loader />;
 
   const appointments = snapShot.docs.map((d) => ({ uid: d.id, ...d.data() })) as Array<AppointmentDoc>;
 

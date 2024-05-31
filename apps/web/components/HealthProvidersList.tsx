@@ -6,6 +6,7 @@ import { SearchIcon } from '@chakra-ui/icons';
 import {
   Avatar,
   Box,
+  Center,
   Flex,
   FlexProps,
   HStack,
@@ -13,33 +14,61 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Spinner,
   Stack,
   Text,
 } from '@chakra-ui/react';
 import { collection, query, where } from 'firebase/firestore';
 import Link from 'next/link';
+import { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import Loader from './shared/Loader';
 
 export default function HealthProviderList() {
   const loggedInUser = useLoggedInUser();
 
-  const [healthProviders] = useCollection(
+  const [healthProviders, loading] = useCollection(
     query(collection(firestore, healthProvidersCol), where('doctor_id', '==', loggedInUser))
   );
 
+  const [search, setSearch] = useState<string>('');
+
+  if (loading) return <Loader />;
+
   return (
-    <Flex flexDir={'column'} gap={4}>
-      <Box ml={'auto'}>
+    <Flex flexDir={'column'} gap={2}>
+      <Box ml={'auto'} py={4}>
         <InputGroup color={'gray.500'}>
           <InputLeftElement top={'-4px'}>
             <SearchIcon fontSize={'sm'} />
           </InputLeftElement>
-          <Input variant={'search'} placeholder="Search..." size={'sm'} rounded={'full'} />
+          <Input
+            variant={'search'}
+            onChange={(e) => {
+              setSearch(e.target.value.toLowerCase());
+            }}
+            placeholder="Search..."
+            size={'sm'}
+            value={search}
+            rounded={'full'}
+          />
         </InputGroup>
       </Box>
-      {healthProviders?.docs.map((doc) => (
-        <HealthProviderCard key={doc.id} healthProvider={doc.data() as HealthProviderDoc} />
-      ))}
+      {(healthProviders?.docs.map((d) => d.data()) as HealthProviderDoc[]).filter((d) =>
+        d.name.toLowerCase().includes(search)
+      ).length == 0 && (
+        <>
+          <Center py={12}>
+            <Text>No Hospital Found!</Text>
+          </Center>
+        </>
+      )}
+
+      {(healthProviders?.docs.map((d) => d.data()) as HealthProviderDoc[])
+        .filter((d) => d.name.toLowerCase().includes(search))
+        .map((doc) => (
+          <HealthProviderCard key={doc.uid} healthProvider={doc} />
+        ))}
     </Flex>
   );
 }
@@ -54,11 +83,11 @@ const HealthProviderCard = ({ healthProvider, ...rest }: HealthProviderListProps
       <Flex
         bg={'#ffff'}
         rounded={'md'}
-        shadow={'sm'}
+        shadow={'xs'}
         p={4}
         cursor={'pointer'}
         border={'1px solid'}
-        borderColor={'gray.300'}
+        borderColor={'gray.200'}
         _hover={{
           bg: 'gay.300',
           shadow: 'sm',
@@ -69,7 +98,7 @@ const HealthProviderCard = ({ healthProvider, ...rest }: HealthProviderListProps
           <Avatar src={healthProvider.avatar} size={'lg'} />
           <Stack spacing={0}>
             <Heading size={'md'}>{healthProvider.name}</Heading>
-            <Text>{healthProvider.about}</Text>
+            <Text color={'gray.600'}>{healthProvider.about}</Text>
           </Stack>
         </HStack>
       </Flex>

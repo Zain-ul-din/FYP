@@ -30,6 +30,7 @@ import CreateNewHealthProviderForm from './forms/CreateNewHealthProviderForm';
 import MapIcon from './icons/MapIcon';
 import { DeleteIcon, EditIcon, TimeIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/navigation';
+import Loader from './shared/Loader';
 
 interface HealthProviderDetailsProps {
   uid: string;
@@ -86,10 +87,10 @@ export default function HealthProviderDetails({ uid }: HealthProviderDetailsProp
     });
   }, [data, isChangesAvailable]);
 
-  if (loading || !snapShot) return <Spinner />;
+  if (loading || !snapShot) return <Loader />;
   if (err) return <Text color={'red.300'}>Error: {err.message}</Text>;
 
-  if (!data) return <Spinner />;
+  if (!data) return <Loader />;
 
   return (
     <CreateHealthProviderModal.Provider>
