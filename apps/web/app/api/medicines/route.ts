@@ -8,7 +8,7 @@ const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const query = url.searchParams.get('q')
-  
+    
   if(query === null) 
     return NextResponse.json({ medicines: [] }, { status: 200 });
 

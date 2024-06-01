@@ -19,7 +19,7 @@ import {
   useTimeout,
 } from '@chakra-ui/react';
 import { ChatIcon, HamburgerIcon, SearchIcon } from '@chakra-ui/icons';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import SendMsgIcon from './icons/SendMsgIcon';
 import ChatMessage from './shared/ChatMessage';
 import useWindowResize from '@/lib/hooks/useWindowResize';
@@ -32,6 +32,7 @@ import Loader from './shared/Loader';
 import MessageDoc from '@/lib/firebase/types/MessageDoc';
 import ChatMessageDoc from '@/lib/firebase/types/ChatMessageDoc';
 import useLoggedInUser from '@/lib/hooks/useLoggedInUser';
+import sendNotification from '@/lib/util/sendNotification';
 
 export default function ChatMessages() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -172,19 +173,31 @@ const Chat = ({ model }: { model: MessageDoc }) => {
   }, [snapShot]);
 
   const loggedInUserId = useLoggedInUser();
+  const [isPending, startTransition] = useTransition();
 
   const handleSendMessage = async () => {
     if (messageInput.trim() === '') return;
 
     try {
-      await addDoc(colRef, {
+      const data: ChatMessageDoc = {
         message: messageInput,
         sender_id: loggedInUserId,
         sender_name: model.doctor_display_name,
         timestamp: serverTimestamp(),
         type: 'conversation',
         sender: 'doctor',
+      };
+      await addDoc(colRef, data);
+
+      await sendNotification({
+        doctor_display_name: model.doctor_display_name,
+        msg: data.message,
+        patient_id: model.patient_id,
       });
+
+      // startTransition(async () => {
+      // });
+
       setMessageInput(''); // Clear the input field after sending the message
     } catch (error) {
       console.error('Error sending message: ', error);
