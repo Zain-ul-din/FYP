@@ -20,5 +20,6 @@ export default interface AppointmentDoc {
   patient_age: number;
   status: AppointmentStatus;
   week_day: string;
+  acc_display_name: string;
   uid?: string;
 }

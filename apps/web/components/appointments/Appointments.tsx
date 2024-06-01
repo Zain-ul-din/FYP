@@ -25,6 +25,8 @@ import { useCallback } from 'react';
 import timeStampToDate from '@/lib/util/timeStampToDate';
 import AppointmentDoc, { AppointmentStatus } from '@/lib/firebase/types/AppointmentDoc';
 import Loader from '../shared/Loader';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
+import Link from 'next/link';
 
 export default function Appointments() {
   const loggedInUser = useLoggedInUser();
@@ -49,7 +51,7 @@ export default function Appointments() {
       <Thead>
         <Tr>
           <Th>
-            <Checkbox />
+            View
           </Th>
           <Th>Hospital Avatar</Th>
           <Th>Hospital</Th>
@@ -68,7 +70,11 @@ export default function Appointments() {
           return (
             <Tr key={idx}>
               <Th>
-                <Checkbox />
+                <Link href={`/dashboard/appointments/${appointment.uid}`}>
+                <Button size={'sm'} variant={'solid'}>
+                  <ExternalLinkIcon />
+                </Button>
+                </Link>
               </Th>
               <Th>
                 <Avatar src={appointment.health_provider_avatar} size={'md'} />
