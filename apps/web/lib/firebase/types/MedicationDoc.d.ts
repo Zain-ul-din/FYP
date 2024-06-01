@@ -24,5 +24,7 @@ export default interface MedicationDoc {
 
   public?: boolean;
   uid: string;
+  subscribers: string[];
 }
+
 

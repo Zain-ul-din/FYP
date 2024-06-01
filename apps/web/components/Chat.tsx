@@ -29,7 +29,18 @@ import ChatMessage from './shared/ChatMessage';
 import useWindowResize from '@/lib/hooks/useWindowResize';
 import DashboardHeader from './shared/DashboardHeader';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { SnapshotMetadata, addDoc, collection, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
+import {
+  SnapshotMetadata,
+  addDoc,
+  arrayUnion,
+  collection,
+  doc,
+  orderBy,
+  query,
+  serverTimestamp,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
 import { firestore } from '@/lib/firebase';
 import { medicationsCol, messagesCol } from '@/lib/firebase/collections';
 import Loader from './shared/Loader';
@@ -255,7 +266,13 @@ const Chat = ({ model }: { model: MessageDoc }) => {
         ref={chatContainerRef}
       >
         {chatMessages.map((chat, i) => (
-          <ChatMessage key={i} sender={chat.sender} time={''} isActiveUser={chat.sender == 'doctor'}>
+          <ChatMessage
+            key={i}
+            sender={chat.sender}
+            isActivity={chat.type == 'activity'}
+            time={''}
+            isActiveUser={chat.sender == 'doctor'}
+          >
             {chat.message}
           </ChatMessage>
         ))}
@@ -273,7 +290,32 @@ const Chat = ({ model }: { model: MessageDoc }) => {
                 <MenuList>
                   {medications.map((med, idx) => {
                     return (
-                      <MenuItem key={idx}>
+                      <MenuItem
+                        key={idx}
+                        onClick={() => {
+                          const docRef = doc(collection(firestore, medicationsCol), med.uid);
+                          updateDoc(docRef, {
+                            subscribers: arrayUnion(model.patient_id),
+                          });
+
+                          const data: ChatMessageDoc = {
+                            message: `Assigned new medication plan. - ${med.name}`,
+                            sender_id: loggedInUserId,
+                            sender_name: model.doctor_display_name,
+                            timestamp: serverTimestamp(),
+                            type: 'activity',
+                            sender: 'doctor',
+                          };
+
+                          addDoc(colRef, data);
+
+                          sendNotification({
+                            doctor_display_name: model.doctor_display_name,
+                            msg: `Assigned new medication plan. - ${med.name}`,
+                            patient_id: model.patient_id,
+                          });
+                        }}
+                      >
                         <MedicineIcon
                           color="black"
                           fill="black"
