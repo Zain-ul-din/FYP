@@ -4,6 +4,7 @@ import {
   Avatar,
   Box,
   Button,
+  Center,
   Flex,
   Grid,
   GridItem,
@@ -12,27 +13,34 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Stack,
-  Tag,
   Text,
   useDisclosure,
   useTimeout,
 } from '@chakra-ui/react';
-import { ChatIcon, HamburgerIcon, SearchIcon } from '@chakra-ui/icons';
-import { useEffect, useRef, useState, useTransition } from 'react';
+import { AddIcon, ChatIcon, HamburgerIcon, SearchIcon } from '@chakra-ui/icons';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import SendMsgIcon from './icons/SendMsgIcon';
 import ChatMessage from './shared/ChatMessage';
 import useWindowResize from '@/lib/hooks/useWindowResize';
 import DashboardHeader from './shared/DashboardHeader';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { addDoc, collection, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
+import { SnapshotMetadata, addDoc, collection, orderBy, query, serverTimestamp, where } from 'firebase/firestore';
 import { firestore } from '@/lib/firebase';
-import { messagesCol } from '@/lib/firebase/collections';
+import { medicationsCol, messagesCol } from '@/lib/firebase/collections';
 import Loader from './shared/Loader';
 import MessageDoc from '@/lib/firebase/types/MessageDoc';
 import ChatMessageDoc from '@/lib/firebase/types/ChatMessageDoc';
 import useLoggedInUser from '@/lib/hooks/useLoggedInUser';
 import sendNotification from '@/lib/util/sendNotification';
+import MedicationDoc from '@/lib/firebase/types/MedicationDoc';
+import MedicineIcon from './icons/MedicineIcon';
+
+const MedicationContext = createContext<MedicationDoc[]>([]);
 
 export default function ChatMessages() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,13 +66,26 @@ export default function ChatMessages() {
   const [snapShot] = useCollection(query(collection(firestore, messagesCol)));
 
   const [selectedUSer, setSelectedUser] = useState<MessageDoc | null>(null);
+  const loggedInUserId = useLoggedInUser();
+
+  const [medicationSnapShot] = useCollection(
+    query(collection(firestore, medicationsCol), where('doctor_id', '==', loggedInUserId))
+  );
+  const [medications, setMedications] = useState<MedicationDoc[]>([]);
+
+  useEffect(() => {
+    if (!medicationSnapShot) return;
+    setMedications(medicationSnapShot.docs.map((d) => d.data()) as MedicationDoc[]);
+  }, [medicationSnapShot]);
+
+  const [search, setSearch] = useState<string>('');
 
   if (!snapShot) return <Loader />;
 
   const messages = snapShot.docs.map((d) => d.data()) as MessageDoc[];
 
   return (
-    <>
+    <MedicationContext.Provider value={medications}>
       <DashboardHeader
         alignItems={'center'}
         stackProps={{
@@ -104,32 +125,39 @@ export default function ChatMessages() {
               <InputLeftElement>
                 <SearchIcon color={'gray.500'} fontSize={'xs'} />
               </InputLeftElement>
-              <Input placeholder="Search..." variant={'search'} fontSize={'xs'} />
+              <Input
+                placeholder="Search..."
+                variant={'search'}
+                fontSize={'xs'}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </InputGroup>
           </Box>
-          {/* <Flex gap={4}>
-            <Tag colorScheme="orange" rounded={'lg'}>
-              New Messages
-            </Tag>
-            <Tag variant={'outline'} colorScheme="blackAlpha" rounded={'lg'}>
-              All Messages
-            </Tag>
-          </Flex> */}
 
           <Flex flexDir={'column'} gap={2}>
-            {messages.map((msg, idx) => {
-              return (
-                <Profile
-                  active={selectedUSer != null && selectedUSer.patient_id === msg.patient_id}
-                  onClick={() => {
-                    setSelectedUser(msg);
-                  }}
-                  name={msg.patient_name}
-                  avatar={msg.patient_avatar}
-                  key={idx}
-                />
-              );
-            })}
+            {messages.filter((msg) => msg.patient_name.toLowerCase().includes(search.toLowerCase())).length == 0 && (
+              <>
+                <Center py={4}>
+                  <Text color={'gray.600'}>Not Patient Found</Text>
+                </Center>
+              </>
+            )}
+            {messages
+              .filter((msg) => msg.patient_name.toLowerCase().includes(search.toLowerCase()))
+              .map((msg, idx) => {
+                return (
+                  <Profile
+                    active={selectedUSer != null && selectedUSer.patient_id === msg.patient_id}
+                    onClick={() => {
+                      setSelectedUser(msg);
+                    }}
+                    name={msg.patient_name}
+                    avatar={msg.patient_avatar}
+                    key={idx}
+                  />
+                );
+              })}
           </Flex>
         </Flex>
 
@@ -147,16 +175,9 @@ export default function ChatMessages() {
           )}
         </Flex>
       </Flex>
-    </>
+    </MedicationContext.Provider>
   );
 }
-
-const DUMMY_MESSAGES = [
-  { msg: 'Hello! Where are you brother? ', time: '15:42', sender: 'Driver' },
-  { msg: 'I’m just few blocks away from your Position.Please hurry', time: '16:42', sender: 'Admin' },
-  { msg: 'Ok I’m coming', time: '16:45', sender: 'Driver' },
-  { msg: 'Thanks, We are waiting . It’s an emergency.', time: '16:46', sender: 'Admin' },
-];
 
 const Chat = ({ model }: { model: MessageDoc }) => {
   // TODO: filter by doctor id later
@@ -173,7 +194,7 @@ const Chat = ({ model }: { model: MessageDoc }) => {
   }, [snapShot]);
 
   const loggedInUserId = useLoggedInUser();
-  const [isPending, startTransition] = useTransition();
+  const medications = useContext(MedicationContext);
 
   const handleSendMessage = async () => {
     if (messageInput.trim() === '') return;
@@ -189,20 +210,24 @@ const Chat = ({ model }: { model: MessageDoc }) => {
       };
       await addDoc(colRef, data);
 
+      setMessageInput(''); // Clear the input field after sending the message
+
       await sendNotification({
         doctor_display_name: model.doctor_display_name,
         msg: data.message,
         patient_id: model.patient_id,
       });
-
-      // startTransition(async () => {
-      // });
-
-      setMessageInput(''); // Clear the input field after sending the message
     } catch (error) {
       console.error('Error sending message: ', error);
     }
   };
+
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!chatContainerRef.current) return;
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  }, [chatMessages]);
 
   return (
     <Grid w={'full'} h={'full'} gridTemplateRows={'repeat(8, 1fr)'}>
@@ -219,7 +244,16 @@ const Chat = ({ model }: { model: MessageDoc }) => {
           </Stack>
         </HStack>
       </GridItem>
-      <GridItem rowSpan={6} display={'flex'} w={'100%'} px={4} flexDir={'column'} gap={2} overflowY={'auto'}>
+      <GridItem
+        rowSpan={6}
+        display={'flex'}
+        w={'100%'}
+        px={4}
+        flexDir={'column'}
+        gap={2}
+        overflowY={'auto'}
+        ref={chatContainerRef}
+      >
         {chatMessages.map((chat, i) => (
           <ChatMessage key={i} sender={chat.sender} time={''} isActiveUser={chat.sender == 'doctor'}>
             {chat.message}
@@ -228,10 +262,36 @@ const Chat = ({ model }: { model: MessageDoc }) => {
       </GridItem>
       <GridItem rowSpan={1} display={'flex'}>
         <InputGroup mt={'auto'}>
-          <InputRightElement top={'20%'}>
-            <Button variant={'unstyled'} onClick={handleSendMessage}>
-              <SendMsgIcon />
-            </Button>
+          <InputRightElement top={'20%'} right={'5%'}>
+            <HStack>
+              <Menu colorScheme="linkedin">
+                <MenuButton>
+                  <Button size={'sm'} colorScheme="blackAlpha" variant={'ghost'}>
+                    <AddIcon />
+                  </Button>
+                </MenuButton>
+                <MenuList>
+                  {medications.map((med, idx) => {
+                    return (
+                      <MenuItem key={idx}>
+                        <MedicineIcon
+                          color="black"
+                          fill="black"
+                          fontSize={'1.3rem'}
+                          style={{
+                            margin: '0rem 0.5rem',
+                          }}
+                        />
+                        {med.name}
+                      </MenuItem>
+                    );
+                  })}
+                </MenuList>
+              </Menu>
+              <Button variant={'unstyled'} onClick={handleSendMessage}>
+                <SendMsgIcon />
+              </Button>
+            </HStack>
           </InputRightElement>
           <Input
             w={'full'}
