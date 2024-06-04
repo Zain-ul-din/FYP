@@ -16,10 +16,15 @@ import {
   FormLabel,
   HStack,
   Input,
+  Avatar,
 } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
-import { FormEvent, useReducer, useCallback, useState } from 'react';
+import { FormEvent, useReducer, useCallback, useState, useRef, useTransition } from 'react';
 import Logo from './icons/Logo';
+import UploadIcon from './icons/UploadIcon';
+import { firebaseAuth, uploadBlobToFirestore } from '@/lib/firebase';
+import useLoggedInUser from '@/lib/hooks/useLoggedInUser';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 interface JoinAsDoctorFormProps extends FlexProps {}
 
@@ -31,6 +36,7 @@ interface FormState {
   secondarySpecializations: InputState;
   conditionsTreated: InputState<string[]>;
   pmdcRegistrationNumber: InputState;
+  photoURL: InputState;
 }
 
 const initialFormState: FormState = {
@@ -41,6 +47,7 @@ const initialFormState: FormState = {
   secondarySpecializations: { value: '', error: '' },
   conditionsTreated: { value: [], error: '' },
   pmdcRegistrationNumber: { value: '', error: '' },
+  photoURL: { value: '', error: '' },
 };
 
 const formReducer = (
@@ -51,6 +58,15 @@ const formReducer = (
   }
 ) => {
   switch (action.type) {
+    case 'photoURL': {
+      return {
+        ...state,
+        photoURL: {
+          value: action.payload as string,
+          error: action.payload.length !== 0 ? '' : 'Upload your profile picture',
+        },
+      };
+    }
     case 'title':
       return {
         ...state,
@@ -144,7 +160,7 @@ const formReducer = (
 export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
   const [loading, setLoading] = useState<boolean>(false);
-  
+
   const submitForm = useCallback(
     async (e: FormEvent<HTMLDivElement>) => {
       e.preventDefault();
@@ -167,11 +183,21 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
         secondarySpecializations: formState.secondarySpecializations.value,
         conditionsTreated: formState.conditionsTreated.value,
         pmdcRegistrationNumber: formState.pmdcRegistrationNumber.value,
+        photoURL: formState.photoURL.value,
       });
       setLoading(false);
     },
     [formState]
   );
+
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
+  const handleUpload = useCallback(() => {
+    if (!hiddenInputRef.current) return;
+    hiddenInputRef.current.click();
+  }, []);
+
+  const [loggedInUser] = useAuthState(firebaseAuth);
+  const [uploadingFile, startUploading] = useTransition();
 
   return (
     <>
@@ -192,6 +218,38 @@ export default function JoinAsDoctor({ ...rest }: JoinAsDoctorFormProps) {
         as={'form'}
         onSubmit={submitForm}
       >
+        <FormControl isInvalid={formState.photoURL.error !== ''}>
+          <FormLabel>Upload Photo</FormLabel>
+
+          <Flex justifyContent={'center'} gap={6} alignItems={'center'}>
+            <Avatar src={formState.photoURL.value} my={2} size={'xl'} />
+            <Input placeholder="" value={formState.photoURL.value} variant={'outline'} readOnly display={'none'} />
+            <Button variant={'red'} size={'md'} isLoading={uploadingFile} fontSize={'sm'} onClick={handleUpload}>
+              <UploadIcon fontSize={'1rem'} /> Upload
+            </Button>
+            <input
+              type="file"
+              ref={hiddenInputRef}
+              accept="image/*"
+              onChange={(event) => {
+                if (!event.target.files || !loggedInUser) return;
+                const file = event.target.files[0];
+                const blob = new Blob([file], { type: file.type });
+                startUploading(async () => {
+                  const photoURL = await uploadBlobToFirestore(blob, loggedInUser.uid);
+                  dispatch({
+                    payload: photoURL,
+                    type: 'photoURL',
+                  });
+                });
+              }}
+              style={{
+                display: 'none',
+              }}
+            />
+          </Flex>
+          <FormErrorMessage>{formState.photoURL.error}</FormErrorMessage>
+        </FormControl>
         <FormControl isInvalid={formState.title.error !== ''}>
           <FormLabel>Title</FormLabel>
           <Select

@@ -4,6 +4,7 @@ export default interface DoctorDoc {
   title: string;
   fullName: string;
   yearOfExperience: string;
+  displayName: string;
   primarySpecialization: string;
   secondarySpecializations: string;
   conditionsTreated: string[];
@@ -22,7 +23,9 @@ export default interface DoctorDoc {
 
   locations: string[];
   specialization: string[];
+  rating: 5.0
 }
+
 
 
 

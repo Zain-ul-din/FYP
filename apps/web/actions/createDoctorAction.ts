@@ -4,16 +4,17 @@ import { initAdminSDK } from "@/lib/firebase/admin-sdk";
 import { doctorsCol } from "@/lib/firebase/collections";
 import DoctorDoc from "@/lib/firebase/types/DoctorDoc";
 import { auth, firestore } from "firebase-admin";
-import { cookies, headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import { RedirectType, redirect } from "next/navigation";
 
 export default async function createDoctorAction(
   doctorDetails: Pick<DoctorDoc,
     "title" | "fullName" | "conditionsTreated"
     | "pmdcRegistrationNumber" | "primarySpecialization"
-    | "secondarySpecializations" | "yearOfExperience"
+    | "secondarySpecializations" | "yearOfExperience" | "photoURL"
   >
 ) {
+  
   initAdminSDK();
   const session = cookies().get('session')?.value || '';
   const decodedClaims = await auth().verifySessionCookie(session, true);
@@ -30,13 +31,14 @@ export default async function createDoctorAction(
     updatedAt: firestore.FieldValue.serverTimestamp(),
     phone_number: '+923112323230',
     email: decodedClaims.email || '',
-    photoURL: decodedClaims.picture || '',
     markdown: '### Write about yourself here',
     specialization: [
       doctorDetails.primarySpecialization,
       doctorDetails.secondarySpecializations
     ],
-    locations: []
+    locations: [],
+    rating: 5.0,
+    displayName: `${doctorDetails.title} ${doctorDetails.fullName}`
   }
 
   // set doc uid
@@ -44,8 +46,9 @@ export default async function createDoctorAction(
     merge: true
   });
 
-
+  redirect("/blog", RedirectType.replace);
 }
+
 
 
 
