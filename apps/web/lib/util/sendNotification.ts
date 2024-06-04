@@ -10,7 +10,6 @@ export default async function sendNotification(
   }
 ) {
   
-  
   initAdminSDK();
   const patientRef = firestore().collection('patients').doc(patient_id);
   const patientDoc = await patientRef.get();
@@ -19,7 +18,7 @@ export default async function sendNotification(
 
   const message = {
     notification: {
-      title: `New Message from ${doctor_display_name}`,
+      title: `${doctor_display_name}`,
       body: msg,
     },
     token: fcmToken,

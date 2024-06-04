@@ -1,19 +1,38 @@
 'use client';
 
-import UserIcon from "@/components/icons/UserIcon";
-import DashboardHeader from "@/components/shared/DashboardHeader";
-import Loader from "@/components/shared/Loader";
-import RoutesBreadcrumb from "@/components/shared/RoutesBreadcrumb";
-import { firestore } from "@/lib/firebase";
-import { appointmentsCol, healthProvidersCol } from "@/lib/firebase/collections";
-import AppointmentDoc, { AppointmentStatus } from "@/lib/firebase/types/AppointmentDoc";
-import HealthProviderDoc from "@/lib/firebase/types/HealthProviderDoc";
-import timeStampToDate from "@/lib/util/timeStampToDate";
-import { Flex, Grid, GridItem, GridItemProps, HStack, Heading, Stack, useMediaQuery, Text, Avatar, Button, Tag, Menu, MenuList, MenuItem, MenuButton } from "@chakra-ui/react";
-import { collection, doc, documentId, query, serverTimestamp, updateDoc, where } from "firebase/firestore";
-import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
+import UserIcon from '@/components/icons/UserIcon';
+import DashboardHeader from '@/components/shared/DashboardHeader';
+import Loader from '@/components/shared/Loader';
+import RoutesBreadcrumb from '@/components/shared/RoutesBreadcrumb';
+import { firestore } from '@/lib/firebase';
+import { appointmentsCol, healthProvidersCol } from '@/lib/firebase/collections';
+import AppointmentDoc, { AppointmentStatus } from '@/lib/firebase/types/AppointmentDoc';
+import HealthProviderDoc from '@/lib/firebase/types/HealthProviderDoc';
+import useDoctorDoc from '@/lib/hooks/useDoctorDoc';
+import sendNotification from '@/lib/util/sendNotification';
+import timeStampToDate from '@/lib/util/timeStampToDate';
+import {
+  Flex,
+  Grid,
+  GridItem,
+  GridItemProps,
+  HStack,
+  Heading,
+  Stack,
+  useMediaQuery,
+  Text,
+  Avatar,
+  Button,
+  Tag,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+} from '@chakra-ui/react';
+import { collection, doc, documentId, query, serverTimestamp, updateDoc, where } from 'firebase/firestore';
+import Link from 'next/link';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 const defaultGridProps = {
   colSpan: 5,
@@ -22,15 +41,11 @@ const defaultGridProps = {
 };
 
 export default function SlugUrl({ params: { slug } }: { params: { slug: string } }) {
-
-  const [snapShot] = useCollection(query(collection(firestore, appointmentsCol), where(
-    documentId(), '==',
-    slug
-  )))
+  const [snapShot] = useCollection(query(collection(firestore, appointmentsCol), where(documentId(), '==', slug)));
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMdScreen] = useMediaQuery('(max-width: 750px)');
   const [gridProps, setGridProps] = useState(defaultGridProps);
-    
+
   const onWindowResize = useCallback(() => {
     if (!containerRef.current) return;
     const containerWidth = containerRef.current.clientWidth;
@@ -39,70 +54,82 @@ export default function SlugUrl({ params: { slug } }: { params: { slug: string }
     else setGridProps(defaultGridProps);
   }, [containerRef]);
 
-  if(!snapShot) return <Loader />;
-  
-  const appointmentDetails = snapShot.docs.map(d => ({ uid: d.id, ...(d.data()) }) )[0] as AppointmentDoc
+  if (!snapShot) return <Loader />;
 
-  return <>
-    <DashboardHeader>Appointment Details</DashboardHeader>
-    <RoutesBreadcrumb
-          icon={(props) => (
-            <UserIcon
-              {...props}
-              style={{
-                minWidth: '20px',
-                minHeight: '20px',
-                transform: 'translateY(-2px)',
-                marginLeft: '0.3rem',
-              }}
-              color="red"
-            />
-          )}
-          path={`Bookings > ${appointmentDetails.uid}`}
-          whiteSpace={'nowrap'}
-          overflowX={'auto'}
-          gap={4}
+  const appointmentDetails = snapShot.docs.map((d) => ({ uid: d.id, ...d.data() }))[0] as AppointmentDoc;
 
-        >
-        </RoutesBreadcrumb>
-        <Flex flexDir={'column'} gap={2} p={isMdScreen ? 1 : 4} pt={0} maxW={'1200px'}ref={containerRef}>
+  return (
+    <>
+      <DashboardHeader>Appointment Details</DashboardHeader>
+      <RoutesBreadcrumb
+        icon={(props) => (
+          <UserIcon
+            {...props}
+            style={{
+              minWidth: '20px',
+              minHeight: '20px',
+              transform: 'translateY(-2px)',
+              marginLeft: '0.3rem',
+            }}
+            color="red"
+          />
+        )}
+        path={`Bookings > ${appointmentDetails.uid}`}
+        whiteSpace={'nowrap'}
+        overflowX={'auto'}
+        gap={4}
+      ></RoutesBreadcrumb>
+      <Flex flexDir={'column'} gap={2} p={isMdScreen ? 1 : 4} pt={0} maxW={'1200px'} ref={containerRef}>
         <Grid
-            mt={2}
-            gridTemplateColumns={`repeat(${gridProps.colSpan}, 1fr)`}
-            gridTemplateRows={'repeat(1, 1fr)'}
+          mt={2}
+          gridTemplateColumns={`repeat(${gridProps.colSpan}, 1fr)`}
+          gridTemplateRows={'repeat(1, 1fr)'}
+          p={3}
+          pb={0}
+          gap={2}
+        >
+          <OrganizationDetails
+            bg={'white'}
             p={3}
-            pb={0}
-            gap={2}
-          >
-            <OrganizationDetails 
-              bg={'white'} p={3} rounded={'md'} colSpan={gridProps.leftColSpan} 
-              model={appointmentDetails}
-            />
+            rounded={'md'}
+            colSpan={gridProps.leftColSpan}
+            model={appointmentDetails}
+          />
 
-            <GridItem colSpan={gridProps.rightColSpan}>
-              <Grid templateRows={'repeat(1, 1fr)'} h={'full'} w={'full'} gap={2}>
-                <AppointmentDetails bg={'white'} p={3} rounded={'md'} model={appointmentDetails} />
-                <PatientDetails bg={'white'} p={3} rounded={'md'} model={appointmentDetails}/>
-              </Grid>
-            </GridItem>
-          </Grid>
-        </Flex>
-  </>
+          <GridItem colSpan={gridProps.rightColSpan}>
+            <Grid templateRows={'repeat(1, 1fr)'} h={'full'} w={'full'} gap={2}>
+              <AppointmentDetails bg={'white'} p={3} rounded={'md'} model={appointmentDetails} />
+              <PatientDetails bg={'white'} p={3} rounded={'md'} model={appointmentDetails} />
+            </Grid>
+          </GridItem>
+        </Grid>
+      </Flex>
+    </>
+  );
 }
 
 interface PatientDetailsProps extends GridItemProps {
   model: AppointmentDoc;
-} 
-
+}
 
 const AppointmentDetails = ({ model, ...rest }: PatientDetailsProps) => {
+  const doctor = useDoctorDoc();
 
-  const updateStatus = useCallback((doc_id: string, status: AppointmentStatus) => {
-    updateDoc(doc(collection(firestore, appointmentsCol), doc_id), {
-      status,
-      updated_at: serverTimestamp(),
-    } as Pick<AppointmentDoc, 'status'>);
-  }, []);
+  const updateStatus = useCallback(
+    (doc_id: string, status: AppointmentStatus, appointment: AppointmentDoc) => {
+      if (!doctor) return;
+      updateDoc(doc(collection(firestore, appointmentsCol), doc_id), {
+        status,
+        updated_at: serverTimestamp(),
+      } as Pick<AppointmentDoc, 'status'>);
+      sendNotification({
+        doctor_display_name: doctor.displayName,
+        msg: `${status} your appointment at ${timeStampToDate(appointment.appointment_date as any).toDateString()} ${appointment.slot} `,
+        patient_id: appointment.patient_id,
+      });
+    },
+    [doctor]
+  );
 
   return (
     <GridItem {...rest}>
@@ -110,39 +137,39 @@ const AppointmentDetails = ({ model, ...rest }: PatientDetailsProps) => {
         <Flex alignItems={'center'}>
           <Heading fontSize={'xl'}>Appointment Details</Heading>
           <Menu size={'sm'}>
-                  <MenuButton ml={'auto'}>
-                    <Button variant={'outline'}>...</Button>
-                  </MenuButton>
-                  <MenuList maxW={'sm'}>
-                    <MenuItem
-                      fontSize={'sm'}
-                      py={3}
-                      onClick={() => {
-                        updateStatus(model.uid as string, 'approved');
-                      }}
-                    >
-                      ✔ Approve
-                    </MenuItem>
-                    <MenuItem
-                      fontSize={'sm'}
-                      py={3}
-                      onClick={() => {
-                        updateStatus(model.uid as string, 'pending');
-                      }}
-                    >
-                      🕑 Pending
-                    </MenuItem>
-                    <MenuItem
-                      fontSize={'sm'}
-                      py={3}
-                      onClick={() => {
-                        updateStatus(model.uid as string, 'rejected');
-                      }}
-                    >
-                      ❌ Reject
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
+            <MenuButton ml={'auto'}>
+              <Button variant={'outline'}>...</Button>
+            </MenuButton>
+            <MenuList maxW={'sm'}>
+              <MenuItem
+                fontSize={'sm'}
+                py={3}
+                onClick={() => {
+                  updateStatus(model.uid as string, 'approved', model);
+                }}
+              >
+                ✔ Approve
+              </MenuItem>
+              <MenuItem
+                fontSize={'sm'}
+                py={3}
+                onClick={() => {
+                  updateStatus(model.uid as string, 'pending', model);
+                }}
+              >
+                🕑 Pending
+              </MenuItem>
+              <MenuItem
+                fontSize={'sm'}
+                py={3}
+                onClick={() => {
+                  updateStatus(model.uid as string, 'rejected', model);
+                }}
+              >
+                ❌ Reject
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Flex>
         <Stack spacing={4}>
           <HStack spacing={8}>
@@ -171,20 +198,20 @@ const AppointmentDetails = ({ model, ...rest }: PatientDetailsProps) => {
                 Status
               </Text>
               <Tag
-                  colorScheme={(() => {
-                    switch (model.status.toLocaleLowerCase()) {
-                      case 'pending':
-                        return 'yellow';
-                      case 'approved':
-                        return 'green';
-                      case 'rejected':
-                        return 'red';
-                    }
-                  })()}
-                  size={'sm'}
-                >
-                  {model.status}
-                </Tag>
+                colorScheme={(() => {
+                  switch (model.status.toLocaleLowerCase()) {
+                    case 'pending':
+                      return 'yellow';
+                    case 'approved':
+                      return 'green';
+                    case 'rejected':
+                      return 'red';
+                  }
+                })()}
+                size={'sm'}
+              >
+                {model.status}
+              </Tag>
               {/* <Text fontSize={'sm'}>{model.status}</Text> */}
             </HStack>
           </HStack>
@@ -228,8 +255,10 @@ const PatientDetails = ({ model, ...rest }: PatientDetailsProps) => {
               <Text fontSize={'sm'}>{model.patient_age}</Text>
             </HStack>
           </HStack>
-          <Stack >
-            <Button fontSize={'sm'} variant={'red'}>Start Chat</Button>
+          <Stack>
+            <Button fontSize={'sm'} variant={'red'}>
+              Start Chat
+            </Button>
           </Stack>
         </Stack>
       </Stack>
@@ -238,18 +267,19 @@ const PatientDetails = ({ model, ...rest }: PatientDetailsProps) => {
 };
 
 interface OrgProps extends GridItemProps {
-  model: AppointmentDoc
+  model: AppointmentDoc;
 }
 
 const OrganizationDetails = ({ model, ...rest }: OrgProps) => {
+  const [snapShot] = useCollection(
+    query(collection(firestore, healthProvidersCol), where('uid', '==', model.health_provider_id))
+  );
 
-  const [snapShot] = useCollection(query(collection(firestore, healthProvidersCol), where('uid', '==', model.health_provider_id)));
-  
   const [healthProvider, setHealthProvider] = useState<HealthProviderDoc | null>(null);
 
-  useEffect(()=> {
-    if(snapShot == null) return;
-    setHealthProvider(snapShot.docs.map(doc => doc.data())[0] as HealthProviderDoc);
+  useEffect(() => {
+    if (snapShot == null) return;
+    setHealthProvider(snapShot.docs.map((doc) => doc.data())[0] as HealthProviderDoc);
   }, [snapShot]);
 
   return (
@@ -258,10 +288,9 @@ const OrganizationDetails = ({ model, ...rest }: OrgProps) => {
         <Heading fontSize={'xl'}>Health Provider</Heading>
         <Stack spacing={4}>
           <HStack spacing={6}>
-            <Text fontSize={'sm'}><Avatar 
-                src={model.health_provider_avatar}
-                size={'xl'}
-              /></Text>
+            <Text fontSize={'sm'}>
+              <Avatar src={model.health_provider_avatar} size={'xl'} />
+            </Text>
           </HStack>
           <HStack spacing={6}>
             <Text fontSize={'sm'} color={'gray.500'}>
@@ -293,7 +322,9 @@ const OrganizationDetails = ({ model, ...rest }: OrgProps) => {
             </Text>
             <Text fontSize={'sm'}>
               <Link href={`/dashboard/hospitals/${model.health_provider_id}`}>
-                <Button size={'sm'} variant={'red'} fontWeight={'light'}>View All Details</Button>
+                <Button size={'sm'} variant={'red'} fontWeight={'light'}>
+                  View All Details
+                </Button>
               </Link>
             </Text>
           </HStack>

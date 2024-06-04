@@ -27,6 +27,8 @@ import AppointmentDoc, { AppointmentStatus } from '@/lib/firebase/types/Appointm
 import Loader from '../shared/Loader';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
+import sendNotification from '@/lib/util/sendNotification';
+import useDoctorDoc from '@/lib/hooks/useDoctorDoc';
 
 export default function Appointments() {
   const loggedInUser = useLoggedInUser();
@@ -35,12 +37,23 @@ export default function Appointments() {
     query(collection(firestore, appointmentsCol), where('doctor_id', '==', loggedInUser), orderBy('created_at', 'desc'))
   );
 
-  const updateStatus = useCallback((doc_id: string, status: AppointmentStatus) => {
-    updateDoc(doc(collection(firestore, appointmentsCol), doc_id), {
-      status,
-      updated_at: serverTimestamp(),
-    } as Pick<AppointmentDoc, 'status'>);
-  }, []);
+  const doctor = useDoctorDoc();
+
+  const updateStatus = useCallback(
+    (doc_id: string, status: AppointmentStatus, appointment: AppointmentDoc) => {
+      if (!doctor) return;
+      updateDoc(doc(collection(firestore, appointmentsCol), doc_id), {
+        status,
+        updated_at: serverTimestamp(),
+      } as Pick<AppointmentDoc, 'status'>);
+      sendNotification({
+        doctor_display_name: doctor.displayName,
+        msg: `${status} your appointment at ${timeStampToDate(appointment.appointment_date as any).toDateString()} ${appointment.slot} `,
+        patient_id: appointment.patient_id,
+      });
+    },
+    [doctor]
+  );
 
   if (!snapShot) return <Loader />;
 
@@ -50,9 +63,7 @@ export default function Appointments() {
     <PaginationTable mt={4}>
       <Thead>
         <Tr>
-          <Th>
-            View
-          </Th>
+          <Th>View</Th>
           <Th>Hospital Avatar</Th>
           <Th>Hospital</Th>
           <Th>Patient Name</Th>
@@ -71,9 +82,9 @@ export default function Appointments() {
             <Tr key={idx}>
               <Th>
                 <Link href={`/dashboard/appointments/${appointment.uid}`}>
-                <Button size={'sm'} variant={'solid'}>
-                  <ExternalLinkIcon />
-                </Button>
+                  <Button size={'sm'} variant={'solid'}>
+                    <ExternalLinkIcon />
+                  </Button>
                 </Link>
               </Th>
               <Th>
@@ -114,7 +125,7 @@ export default function Appointments() {
                       fontSize={'sm'}
                       py={3}
                       onClick={() => {
-                        updateStatus(appointment.uid as string, 'approved');
+                        updateStatus(appointment.uid as string, 'approved', appointment);
                       }}
                     >
                       ✔ Approve
@@ -123,7 +134,7 @@ export default function Appointments() {
                       fontSize={'sm'}
                       py={3}
                       onClick={() => {
-                        updateStatus(appointment.uid as string, 'pending');
+                        updateStatus(appointment.uid as string, 'pending', appointment);
                       }}
                     >
                       🕑 Pending
@@ -132,7 +143,7 @@ export default function Appointments() {
                       fontSize={'sm'}
                       py={3}
                       onClick={() => {
-                        updateStatus(appointment.uid as string, 'rejected');
+                        updateStatus(appointment.uid as string, 'rejected', appointment);
                       }}
                     >
                       ❌ Reject
