@@ -33,6 +33,7 @@ import timeToStr from '@/lib/util/timeToStr';
 import HospitalResType from '@/types/HospitalResType';
 import useLoggedInUser from '@/lib/hooks/useLoggedInUser';
 import DoctorDoc from '@/lib/firebase/types/DoctorDoc';
+import cities from '@/lib/constants/cities';
 
 interface FormState
   extends Record<
@@ -291,7 +292,7 @@ export default function CreateNewHealthProviderForm({
           variant={'filled'}
           value={{ label: formState.city.value, value: formState.city.value }}
           onChange={(val) => dispatch({ type: 'city', payload: val?.value || '' })}
-          options={Object.keys(healthCareProviders).map((city) => ({ label: city, value: city }))}
+          options={cities.map((city) => ({ label: city, value: city }))}
           isDisabled={update}
         />
         <FormErrorMessage>{formState.city.error}</FormErrorMessage>

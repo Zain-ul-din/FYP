@@ -16,6 +16,7 @@ import {
   InputLeftElement,
   Spinner,
   Stack,
+  Tag,
   Text,
 } from '@chakra-ui/react';
 import { collection, query, where } from 'firebase/firestore';
@@ -94,11 +95,18 @@ const HealthProviderCard = ({ healthProvider, ...rest }: HealthProviderListProps
         }}
         {...rest}
       >
-        <HStack spacing={4}>
+        <HStack spacing={6}>
           <Avatar src={healthProvider.avatar} size={'lg'} />
           <Stack spacing={0}>
             <Heading size={'md'}>{healthProvider.name}</Heading>
-            <Text color={'gray.600'}>{healthProvider.about}</Text>
+            <Text color={'gray.600'} fontSize={'sm'}>
+              {healthProvider.location}
+            </Text>
+            <Flex cursor={'text'}>
+              <Tag textAlign={'center'} justifyContent={'center'} maxW={'sm'}>
+                {healthProvider.helpLine.split('tel:')[1]}
+              </Tag>
+            </Flex>
           </Stack>
         </HStack>
       </Flex>
