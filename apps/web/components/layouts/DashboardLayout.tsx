@@ -17,6 +17,10 @@ import {
   Link,
   Heading,
   Center,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
 import { ReactNode, useEffect, useState } from 'react';
 import OrganizationIcon from '../icons/OrganizationIcon';
@@ -30,7 +34,14 @@ import SettingIcons from '../icons/SettingsIcon';
 import CategoryIcon from '../icons/CategoryIcon';
 import FluentSupportIcon from '../icons/FluentSupportIcon';
 import ChatIcon from '../icons/ChatIcon';
-import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  CloseIcon,
+  HamburgerIcon,
+} from '@chakra-ui/icons';
 import ManageIcons from '../icons/ManageIcon';
 import LinkWrapper from '../shared/LinkWrapper';
 import { usePathname } from 'next/navigation';
@@ -38,6 +49,8 @@ import Logo from '../icons/Logo';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { firebaseAuth } from '@/lib/firebase';
 import MedicineIcon from '../icons/MedicineIcon';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 export default function DashboardLayout({ children }: { children?: ReactNode }) {
   const [isMdScreen] = useMediaQuery('(max-width: 850px)');
@@ -46,6 +59,8 @@ export default function DashboardLayout({ children }: { children?: ReactNode }) 
 
   useTimeout(() => setIsMounted(true), 1000);
   const [user] = useAuthState(firebaseAuth);
+
+  const router = useRouter();
 
   return (
     <Flex w={'100%'} h={'100%'}>
@@ -83,7 +98,7 @@ export default function DashboardLayout({ children }: { children?: ReactNode }) 
         {/* top header */}
         <Flex w={'100%'} px={isMdScreen ? '0.2rem' : '1rem'} py={2} gap={2} alignItems={'center'}>
           {isMdScreen && (
-            <Button colorScheme="red" onClick={() => setIsOpen(true)} size={'sm'}>
+            <Button colorScheme="blue" onClick={() => setIsOpen(true)} size={'sm'}>
               <HamburgerIcon />
             </Button>
           )}
@@ -129,9 +144,26 @@ export default function DashboardLayout({ children }: { children?: ReactNode }) 
                   </Text>
                 </Stack>
               )}
-              <Button size={'xs'} p={0} m={0} variant={'unstyled'} color={'gray.500'}>
-                <ChevronDownIcon fontWeight={'bold'} fontSize={'lg'} />
-              </Button>
+              <Menu>
+                <MenuButton>
+                  <Button size={'xs'} p={0} m={0} variant={'unstyled'} color={'gray.500'}>
+                    <ChevronDownIcon fontWeight={'bold'} fontSize={'lg'} />
+                  </Button>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem
+                    onClick={() => {
+                      signOut(firebaseAuth);
+                      fetch('/api/signout').then(() => {
+                        router.push('/');
+                      });
+                    }}
+                  >
+                    <ArrowLeftIcon mx={2} fontSize={'small'} color={'red.700'} />
+                    <Text color={'red.700'}>Logout</Text>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </Flex>
           </HStack>
         </Flex>

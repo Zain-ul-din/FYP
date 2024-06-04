@@ -28,7 +28,7 @@ interface MedicationDetailsProps {
 export default function MedicationDetails({ medication }: MedicationDetailsProps) {
   const [days, setDays] = useState<typeof medication.days>(medication.days);
   const variants = useMemo(() => Object.keys(medication.variants), [medication]);
-
+  
   useEffect(() => {}, [medication]);
 
   const saveProgress = useCallback(
