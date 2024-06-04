@@ -111,6 +111,7 @@ export default function NewMedicationPlanForm({ onClose, update }: NewMedication
       days: {},
       variants: {},
       doctor_id: user.uid,
+      subscribers: [],
     };
 
     const colRef = collection(firestore, medicationsCol);
