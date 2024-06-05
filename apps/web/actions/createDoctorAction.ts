@@ -46,8 +46,9 @@ export default async function createDoctorAction(
     merge: true
   });
 
-  redirect("/blog", RedirectType.replace);
+  redirect("/dashboard", RedirectType.replace);
 }
+
 
 
 
