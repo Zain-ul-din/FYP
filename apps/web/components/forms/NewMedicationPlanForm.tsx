@@ -14,8 +14,17 @@ import {
   Input,
   Textarea,
 } from '@chakra-ui/react';
-import { collection, doc, getCountFromServer, query, serverTimestamp, setDoc, where } from 'firebase/firestore';
-import { useCallback, useReducer, useState } from 'react';
+import {
+  collection,
+  doc,
+  getCountFromServer,
+  query,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
+import { useCallback, useEffect, useReducer, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 interface FormState extends Record<keyof Pick<MedicationDoc, 'name' | 'duration' | 'description'>, InputState> {}
@@ -23,6 +32,7 @@ interface FormState extends Record<keyof Pick<MedicationDoc, 'name' | 'duration'
 interface NewMedicationPlanFormProps extends FlexProps {
   onClose: () => void;
   update?: boolean;
+  model?: MedicationDoc;
 }
 
 const initialFormState: FormState = {
@@ -81,10 +91,17 @@ function formReducer(state: FormState, action: { type: keyof FormState; payload:
   return initialFormState;
 }
 
-export default function NewMedicationPlanForm({ onClose, update }: NewMedicationPlanFormProps) {
+export default function NewMedicationPlanForm({ onClose, update, model }: NewMedicationPlanFormProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
   const [user] = useAuthState(firebaseAuth);
+
+  useEffect(() => {
+    if (model == undefined) return;
+    dispatch({ type: 'name', payload: model.name });
+    dispatch({ type: 'duration', payload: model.duration + '' });
+    dispatch({ type: 'description', payload: model.description + '' });
+  }, [model]);
 
   const handleSubmit = useCallback(async () => {
     let hasErr = Object.entries(formState).some((entry) => {
@@ -98,6 +115,23 @@ export default function NewMedicationPlanForm({ onClose, update }: NewMedication
     });
 
     if (hasErr || user == null) return;
+
+    if (model != undefined) {
+      const docId = model.uid;
+      const colRef = collection(firestore, medicationsCol);
+      const docRef = doc(colRef, docId);
+      setLoading(true);
+      await updateDoc(docRef, {
+        name: formState.name.value,
+        description: formState.description.value,
+        duration: parseInt(formState.duration.value),
+        updated_at: serverTimestamp(),
+      });
+      setLoading(false);
+      onClose();
+      return;
+    }
+
     const docId = `${formState.name.value}_${user.uid}`;
 
     // lets upload to firestore
@@ -184,7 +218,7 @@ export default function NewMedicationPlanForm({ onClose, update }: NewMedication
           Cancel
         </Button>
         <Button colorScheme="blue" type="submit" isLoading={loading}>
-          {update ? 'Update' : 'Create'}
+          {model ? 'Update' : 'Create'}
         </Button>
       </HStack>
     </Flex>
